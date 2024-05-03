@@ -1,9 +1,9 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
-import '../../colors.dart';
-import '../widgets/buttons/big_button.dart';
-import '../widgets/round_copmonents/round_hobbies.dart';
+import '../../../colors.dart';
+import '../../widgets/buttons/big_button.dart';
+import '../../widgets/round_copmonents/round_hobbies.dart';
 
 class HobbiesPage extends StatefulWidget {
   const HobbiesPage({

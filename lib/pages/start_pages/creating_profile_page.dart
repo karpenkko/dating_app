@@ -4,11 +4,11 @@ import 'package:dotted_border/dotted_border.dart';
 
 import 'package:flutter_svg/svg.dart';
 
-import '../colors.dart';
-import '../widgets/buttons/big_button.dart';
-import '../widgets/buttons/icon_button.dart';
-import '../widgets/login_button.dart';
-import '../widgets/login_field.dart';
+import '../../colors.dart';
+import '../../widgets/buttons/big_button.dart';
+import '../../widgets/buttons/icon_button.dart';
+import '../../widgets/login_button.dart';
+import '../../widgets/login_field.dart';
 import 'hobbies_page.dart';
 
 class CreatingProfilePage extends StatefulWidget {

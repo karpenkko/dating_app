@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../colors.dart';
-import '../widgets/login_button.dart';
-import '../widgets/login_field.dart';
+import '../../colors.dart';
+import '../../widgets/login_button.dart';
+import '../../widgets/login_field.dart';
+
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});

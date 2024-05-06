@@ -38,7 +38,7 @@ class _SwipePageState extends State<SwipePage> {
       backgroundColor: AppColor.whiteColor,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.only(top: 20, bottom: 20),
+          padding: const EdgeInsets.only(top: 10),
           child: Column(
             children: [
               const RoundTitle(titleText: 'пошук піплов'),
@@ -48,7 +48,6 @@ class _SwipePageState extends State<SwipePage> {
                   cardsCount: names.length,
                   numberOfCardsDisplayed: 3,
                   backCardOffset: const Offset(0, 0),
-                  padding: const EdgeInsets.all(20.0),
                   cardBuilder: (
                     context,
                     index,
@@ -66,7 +65,7 @@ class _SwipePageState extends State<SwipePage> {
               //     RoundSwipeButton(path: 'assets/icons/yes.svg', horizontal: 23),
               //   ],
               // ),
-              const SizedBox(height: 20),
+              // const SizedBox(height: 20),
               // BigButton(
               //   buttonText: 'Розпочати',
               //   onTap: () {

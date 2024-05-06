@@ -1,5 +1,6 @@
 import 'package:dating_app/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class ScaffoldWithNavbar extends StatelessWidget {
@@ -56,31 +57,72 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20.0),
-          topRight: Radius.circular(20.0),
-        ),
-        color: AppColor.pinkColor, // Змініть колір за потребою
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey.withOpacity(0.5),
-        //     spreadRadius: 1,
-        //     blurRadius: 6,
-        //     offset: Offset(0, -3), // Змініть зміщення за потребою
-        //   ),
-        // ],
+      decoration: const BoxDecoration(
+        color: AppColor.whiteColor,
       ),
-      padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0), // Відступи від країв
+      padding: const EdgeInsets.all(10.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20.0), // Закруглені кути
+        borderRadius: BorderRadius.circular(40.0),
         child: BottomNavigationBar(
           currentIndex: currentIndex,
           onTap: onTap,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.shop), label: 'Shop'),
+          items: [
+            BottomNavigationBarItem(
+              icon: Container(
+                margin:  const EdgeInsets.only(left: 20, top: 2),
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: currentIndex == 0 ? AppColor.whiteColor : Colors.transparent,
+                ),
+                child: SvgPicture.asset(
+                  'assets/icons/nav_home.svg',
+                  height: 22,
+                  colorFilter: currentIndex == 0 ? const ColorFilter.mode(AppColor.purpleColor, BlendMode.srcIn) : const ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+                ),
+              ),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Container(
+                margin: const EdgeInsets.only(top: 4),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: currentIndex == 1 ? AppColor.whiteColor : Colors.transparent,
+                ),
+                child: SvgPicture.asset(
+                  'assets/icons/nav_message.svg',
+                  height: 18,
+                  colorFilter: currentIndex == 1 ? const ColorFilter.mode(AppColor.purpleColor, BlendMode.srcIn) : const ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+                ),
+              ),
+              label: '',
+            ),
+            BottomNavigationBarItem(
+              icon: Container(
+                margin:  const EdgeInsets.only(right: 20, top: 3),
+                padding: const EdgeInsets.all(13),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: currentIndex == 2 ? AppColor.whiteColor : Colors.transparent,
+                ),
+                child: SvgPicture.asset(
+                  'assets/icons/nav_profile.svg',
+                  height: 22,
+                  colorFilter: currentIndex == 2 ? const ColorFilter.mode(AppColor.purpleColor, BlendMode.srcIn) : const ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+                ),
+              ),
+              label: '',
+            ),
           ],
+          unselectedFontSize: 8,
+          selectedFontSize: 8,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          backgroundColor: AppColor.purpleColor,
+          selectedItemColor: AppColor.purpleColor,
+          unselectedItemColor: AppColor.whiteColor.withOpacity(0.8),
         ),
       ),
     );

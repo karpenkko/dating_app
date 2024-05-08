@@ -1,8 +1,10 @@
 import 'package:dating_app/pages/home_pages/profile_page.dart';
-import 'package:dating_app/pages/home_pages/swipe_page.dart';
+import 'package:dating_app/features/swipe_cards/ui/swipe_page.dart';
 import 'package:dating_app/pages/home_pages/wrap_home_page.dart';
-import 'package:dating_app/pages/start_pages/creating_profile_page.dart';
+import 'package:dating_app/features/creating_profile/ui/creating_profile_page.dart';
 import 'package:dating_app/pages/start_pages/intro_page.dart';
+import 'package:dating_app/pages/start_pages/login_page.dart';
+import 'package:dating_app/pages/start_pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,9 +16,21 @@ final GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
-      name: 'home',
+      name: 'intro',
       path: '/',
-      builder: (context, state) => IntroPage(),
+      builder: (context, state) => const IntroPage(),
+    ),
+    GoRoute(
+      name: 'login',
+      path: '/login',
+      builder: (context, state) => const LoginPage(),
+      routes: [
+        GoRoute(
+          name: 'signup',
+          path: 'signup',
+          builder: (context, state) => const SignupPage(),
+        ),
+      ]
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
@@ -29,7 +43,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               name: 'swipe',
               path: '/swipe',
-              builder: (context, state) => SwipePage(),
+              builder: (context, state) => const SwipePage(),
             ),
           ],
         ),
@@ -38,7 +52,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               name: 'creating-profile',
               path: '/creating-profile',
-              builder: (context, state) => CreatingProfilePage(),
+              builder: (context, state) => const CreatingProfilePage(),
             ),
           ],
         ),
@@ -47,7 +61,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               name: 'profile',
               path: '/profile',
-              builder: (context, state) => ProfilePage(),
+              builder: (context, state) => const ProfilePage(),
             ),
           ],
         ),

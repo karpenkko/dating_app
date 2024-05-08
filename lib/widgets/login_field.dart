@@ -16,11 +16,7 @@ class LoginField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return //ConstrainedBox(
-      // constraints: const BoxConstraints(
-      //   maxWidth: 320,
-      // ),
-      /*child:*/ TextFormField(
+    return TextFormField(
         controller: controller,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(left: 25, top: length, bottom: length),
@@ -50,7 +46,6 @@ class LoginField extends StatelessWidget {
           fontSize: 16.0,
           fontWeight: FontWeight.normal,
         ),
-      //),
     );
   }
 }

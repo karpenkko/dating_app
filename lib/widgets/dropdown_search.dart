@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../colors.dart';
-import '../blocks/create_profile_block/creating_profile_bloc.dart';
+import '../features/creating_profile/bloc/creating_profile_bloc.dart';
 
 class CustomDropdownSearch extends StatelessWidget {
   final bool isEnable;

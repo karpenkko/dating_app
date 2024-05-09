@@ -7,10 +7,12 @@ import '../../colors.dart';
 
 class SwipeCard extends StatelessWidget {
   final String buttonText;
+  final bool showDottedBorder;
 
   const SwipeCard({
     super.key,
     required this.buttonText,
+    required this.showDottedBorder,
   });
 
   @override
@@ -24,7 +26,7 @@ class SwipeCard extends StatelessWidget {
     ];
 
     return DottedBorder(
-      color: AppColor.blackColor,
+      color: showDottedBorder? AppColor.blackColor : Colors.transparent,
       strokeCap: StrokeCap.round,
       borderType: BorderType.RRect,
       dashPattern: const [8, 8],
@@ -62,7 +64,18 @@ class SwipeCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 const Text(
-                  '23',
+                  '~ 23 ~',
+                  style: TextStyle(
+                    color: AppColor.blackColor,
+                    fontFamily: 'Raleway',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                    height: 1.2,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                const Text(
+                  'Київ',
                   style: TextStyle(
                     color: AppColor.blackColor,
                     fontFamily: 'Raleway',
@@ -72,6 +85,17 @@ class SwipeCard extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            const SizedBox(height: 4),
+            const Text(
+              'шукає: друзів',
+              style: TextStyle(
+                color: AppColor.blackColor,
+                fontFamily: 'Raleway',
+                fontWeight: FontWeight.normal,
+                fontSize: 16,
+                height: 1.2,
+              ),
             ),
             const SizedBox(height: 20),
             Wrap(

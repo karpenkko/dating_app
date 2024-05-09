@@ -35,7 +35,7 @@ class GenderButton extends StatelessWidget {
             border: Border.all(
               color: selectedGender == gender
                   ? AppColor.pinkColor
-                  : AppColor.blackColor,
+                  : AppColor.blackColor.withOpacity(0.7),
               width: 1,
             ),
           ),

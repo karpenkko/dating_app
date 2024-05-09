@@ -14,3 +14,7 @@ final class SwipeCardsLeftEvent extends SwipeCardsEvent {
   final int swipedCard;
   SwipeCardsLeftEvent(this.swipedCard);
 }
+
+final class SwipeCardsPaymentEvent extends SwipeCardsEvent {
+  SwipeCardsPaymentEvent();
+}

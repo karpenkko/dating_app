@@ -19,10 +19,13 @@ class ProfilePage extends StatelessWidget {
               RoundTitle(titleText: 'ваш профіль'),
               SizedBox(height: 20),
               Flexible(
-                child: SwipeCard(buttonText: 'Asya'),
+                child: SwipeCard(
+                  buttonText: 'Asya',
+                  showDottedBorder: false,
+                ),
               ),
-              SizedBox(height: 20),
-              RoundTitle(titleText: 'редагувати'),
+              // SizedBox(height: 20),
+              // RoundTitle(titleText: 'редагувати'),
             ],
           ),
         ),

@@ -22,15 +22,15 @@ class CustomDropdownMenu extends StatelessWidget {
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: AppColor.blackColor,
+          borderSide: BorderSide(
+            color: AppColor.blackColor.withOpacity(0.7),
             width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: AppColor.blackColor,
+          borderSide: BorderSide(
+            color: AppColor.blackColor.withOpacity(0.7),
             width: 1,
           ),
         ),

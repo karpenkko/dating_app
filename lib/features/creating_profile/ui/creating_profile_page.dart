@@ -6,8 +6,11 @@ import 'package:dating_app/widgets/round_copmonents/round_title.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 
+import '../../../widgets/phone_field.dart';
 import '../bloc/creating_profile_bloc.dart';
 import '../../../colors.dart';
 import '../../../widgets/buttons/big_button.dart';
@@ -19,7 +22,6 @@ import '../../../widgets/round_copmonents/round_hobbies.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'hobbies_page.dart';
-
 
 class CreatingProfilePage extends StatefulWidget {
   const CreatingProfilePage({super.key});
@@ -59,6 +61,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
   late String name;
   late int? age;
   String? selectedGender;
+
 
   String? selectedItem;
   final List<String> options = [
@@ -139,8 +142,8 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                           radius: const Radius.circular(10),
                           child: _image != null
                               ? Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: ClipRRect(
+                                  padding: const EdgeInsets.all(6.0),
+                                  child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8),
                                     child: Image(
                                       image: MemoryImage(_image!),
@@ -149,7 +152,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                              )
+                                )
                               : const Padding(
                                   padding: EdgeInsets.all(34.0),
                                   child: RoundIconButton(
@@ -210,6 +213,9 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                           ),
                         ],
                       ),
+                      const SizedBox(height: 20),
+                      PhoneField(),
+                      //PHONE NUMBER
                       const SizedBox(height: 20),
 
                       //THE PURPOSE OF THE SEARCH

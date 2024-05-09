@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'app_router.dart';
 import 'features/creating_profile/bloc/creating_profile_bloc.dart';
 import 'features/swipe_cards/bloc/swipe_cards_bloc.dart';
 
-void main() {
+import '.env';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey = stripePublishableKey;
+  await dotenv.load(fileName: "lib/.env");
   runApp(const MyApp());
 }
 

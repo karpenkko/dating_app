@@ -21,8 +21,8 @@ class LoginField extends StatelessWidget {
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(left: 25, top: length, bottom: length),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: AppColor.blackColor,
+            borderSide: BorderSide(
+              color: AppColor.blackColor.withOpacity(0.7),
               width: 1,
             ),
             borderRadius: BorderRadius.circular(10),

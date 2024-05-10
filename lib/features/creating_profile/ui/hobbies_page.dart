@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../colors.dart';
+import '../../switching_themes/utils/colors.dart';
 import '../../../widgets/buttons/big_button.dart';
 import '../../../widgets/round_copmonents/round_hobbies.dart';
 import '../bloc/creating_profile_bloc.dart';
@@ -28,17 +28,17 @@ class _HobbiesPageState extends State<HobbiesPage> {
         builder: (context, state) {
           if (state is CreatingProfileLoading) {
             return Container(
-              color: AppColor.whiteColor,
+              color: Theme.of(context).scaffoldBackgroundColor,
               width: double.infinity,
               padding: const EdgeInsets.only(
                   top: 40, bottom: 30, left: 10, right: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text(
+                  Text(
                     'оберіть від 3 до 5 пунктів',
                     style: TextStyle(
-                      color: AppColor.blackColor,
+                      color: Theme.of(context).primaryColor,
                       fontFamily: 'Raleway',
                       fontWeight: FontWeight.normal,
                       fontSize: 16,

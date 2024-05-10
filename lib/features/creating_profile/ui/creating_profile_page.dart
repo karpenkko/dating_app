@@ -8,11 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
 import '../../../widgets/phone_field.dart';
 import '../bloc/creating_profile_bloc.dart';
-import '../../../colors.dart';
+import '../../switching_themes/utils/colors.dart';
 import '../../../widgets/buttons/big_button.dart';
 import '../../../widgets/buttons/icon_button.dart';
 import '../../../widgets/dropdown_search.dart';
@@ -110,7 +109,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.whiteColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: BlocConsumer<CreatingProfileBloc, CreatingProfileState>(
         // bloc: creatingProfileBloc,
         listenWhen: (previous, current) =>
@@ -135,7 +134,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                       GestureDetector(
                         onTap: selectImage,
                         child: DottedBorder(
-                          color: AppColor.blackColor,
+                          color: Theme.of(context).primaryColor,
                           strokeCap: StrokeCap.round,
                           borderType: BorderType.RRect,
                           dashPattern: const [8, 8],
@@ -161,10 +160,10 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                         ),
                       ),
                       const SizedBox(height: 6),
-                      const Text(
+                      Text(
                         'аватар',
                         style: TextStyle(
-                          color: AppColor.blackColor,
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Raleway',
                           fontSize: 18,
                           height: 1.2,
@@ -272,10 +271,10 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
 
                       //HOBBIES
                       const SizedBox(height: 60),
-                      const Text(
+                      Text(
                         'інтереси',
                         style: TextStyle(
-                          color: AppColor.blackColor,
+                          color: Theme.of(context).primaryColor,
                           fontFamily: 'Raleway',
                           fontSize: 18,
                           height: 1.2,
@@ -287,7 +286,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                         child: SizedBox(
                           width: double.infinity,
                           child: DottedBorder(
-                            color: AppColor.blackColor,
+                            color: Theme.of(context).primaryColor,
                             strokeCap: StrokeCap.round,
                             borderType: BorderType.RRect,
                             dashPattern: const [8, 8],
@@ -304,7 +303,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                                           Text(
                                             'оберіть від 3 до 5 пунктів',
                                             style: TextStyle(
-                                              color: AppColor.blackColor
+                                              color: Theme.of(context).primaryColor
                                                   .withOpacity(0.8),
                                               fontFamily: 'Raleway',
                                               fontSize: 16,

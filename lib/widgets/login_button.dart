@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
+import '../features/switching_themes/utils/colors.dart';
 
 class LoginButton extends StatefulWidget {
   final String buttonText;
@@ -22,7 +22,7 @@ class _LoginButtonState extends State<LoginButton> {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        color: AppColor.blackColor,
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: ElevatedButton(
@@ -34,8 +34,8 @@ class _LoginButtonState extends State<LoginButton> {
         ),
         child: Text(
           widget.buttonText,
-          style: const TextStyle(
-            color: AppColor.whiteColor,
+          style: TextStyle(
+            color: Theme.of(context).scaffoldBackgroundColor,
             fontFamily: 'Raleway',
             fontSize: 22,
             fontWeight: FontWeight.w500,

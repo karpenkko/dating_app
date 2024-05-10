@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 
 class BigButton extends StatelessWidget {
   final String buttonText;

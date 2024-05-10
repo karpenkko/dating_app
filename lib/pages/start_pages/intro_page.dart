@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../colors.dart';
 import 'package:go_router/go_router.dart';
 
 class IntroPage extends StatelessWidget {
@@ -12,7 +10,7 @@ class IntroPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 2), () => context.push('/login'));
     return Scaffold(
-      backgroundColor: AppColor.whiteColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -26,10 +24,10 @@ class IntroPage extends StatelessWidget {
                   height: 52,
                 ),
                 const SizedBox(width: 16),
-                const Text(
+                Text(
                   'Dator',
                   style: TextStyle(
-                    color: AppColor.blackColor,
+                    color: Theme.of(context).primaryColor,
                     fontFamily: 'Raleway',
                     fontSize: 44,
                   ),

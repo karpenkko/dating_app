@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-import '../colors.dart';
+import '../features/switching_themes/utils/colors.dart';
 
 class PhoneField extends StatelessWidget {
   final FocusNode focusNode = FocusNode();
@@ -12,23 +12,23 @@ class PhoneField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IntlPhoneField(
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: 'Raleway',
-        color: AppColor.blackColor,
+        color: Theme.of(context).primaryColor,
         fontSize: 16.0,
         fontWeight: FontWeight.normal,
       ),
       focusNode: focusNode,
       invalidNumberMessage: 'Недійсний номер',
       // showDropdownIcon: false,
-      dropdownIcon: const Icon(
+      dropdownIcon: Icon(
         Icons.arrow_drop_down,
-        color: AppColor.whiteColor,
+        color: Theme.of(context).scaffoldBackgroundColor,
         size: 12,
       ),
       dropdownTextStyle: TextStyle(
         fontFamily: 'Raleway',
-        color: AppColor.blackColor.withOpacity(0.8),
+        color: Theme.of(context).primaryColor.withOpacity(0.8),
         fontSize: 16.0,
         fontWeight: FontWeight.normal,
       ),
@@ -44,15 +44,15 @@ class PhoneField extends StatelessWidget {
           fontSize: 12.0,
           fontWeight: FontWeight.normal,
         ),
-        helperStyle: const TextStyle(
+        helperStyle: TextStyle(
           fontFamily: 'Raleway',
-          color: AppColor.blackColor,
+          color: Theme.of(context).primaryColor,
           fontSize: 12.0,
           fontWeight: FontWeight.normal,
         ),
         labelStyle: TextStyle(
           fontFamily: 'Raleway',
-          color: AppColor.blackColor.withOpacity(0.8),
+          color: Theme.of(context).primaryColor.withOpacity(0.8),
           fontSize: 16.0,
           fontWeight: FontWeight.normal,
         ),
@@ -61,14 +61,14 @@ class PhoneField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: AppColor.blackColor.withOpacity(0.7),
+            color: Theme.of(context).primaryColor.withOpacity(0.7),
             width: 1,
           ),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(
-            color: AppColor.blackColor,
+          borderSide: BorderSide(
+            color: Theme.of(context).primaryColor,
             width: 1,
           ),
         ),

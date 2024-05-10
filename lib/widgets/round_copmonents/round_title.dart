@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 
 class RoundTitle extends StatelessWidget {
   final String titleText;

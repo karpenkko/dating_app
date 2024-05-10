@@ -1,7 +1,7 @@
-import 'package:dating_app/pages/home_pages/profile_page.dart';
+import 'package:dating_app/pages/home_pages/connect_page.dart';
+import 'package:dating_app/features/switching_themes/ui/profile_page.dart';
 import 'package:dating_app/features/swipe_cards/ui/swipe_page.dart';
 import 'package:dating_app/pages/home_pages/wrap_home_page.dart';
-import 'package:dating_app/features/creating_profile/ui/creating_profile_page.dart';
 import 'package:dating_app/pages/start_pages/intro_page.dart';
 import 'package:dating_app/pages/start_pages/login_page.dart';
 import 'package:dating_app/pages/start_pages/signup_page.dart';
@@ -50,9 +50,9 @@ final GoRouter router = GoRouter(
         StatefulShellBranch(
           routes: [
             GoRoute(
-              name: 'creating-profile',
-              path: '/creating-profile',
-              builder: (context, state) => const CreatingProfilePage(),
+              name: 'connect-page',
+              path: '/connect-page',
+              builder: (context, state) => const ConnectPage(),
             ),
           ],
         ),
@@ -61,7 +61,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               name: 'profile',
               path: '/profile',
-              builder: (context, state) => const ProfilePage(),
+              builder: (context, state) => ProfilePage(),
             ),
           ],
         ),

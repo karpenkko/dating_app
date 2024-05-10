@@ -7,6 +7,7 @@ import 'features/creating_profile/bloc/creating_profile_bloc.dart';
 import 'features/swipe_cards/bloc/swipe_cards_bloc.dart';
 
 import '.env';
+import 'features/switching_themes/bloc/theme_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,18 +29,23 @@ class MyApp extends StatelessWidget {
         BlocProvider<SwipeCardsBloc>(
           create: (context) => SwipeCardsBloc(),
         ),
-      ],
-      child: PopScope(
-        canPop: true,
-        onPopInvoked: (didPop) {},
-        child: MaterialApp.router(
-          title: 'Dator',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            useMaterial3: true,
-          ),
-          routerConfig: router,
+        BlocProvider<ThemeBloc>(
+          create: (context) => ThemeBloc()..add(InitialThemeSetEvent()),
         ),
+      ],
+      child: BlocBuilder<ThemeBloc, ThemeData>(
+        builder: (context, state) {
+          return PopScope(
+            canPop: true,
+            onPopInvoked: (didPop) {},
+            child: MaterialApp.router(
+              title: 'Dator',
+              debugShowCheckedModeBanner: false,
+              theme: state,
+              routerConfig: router,
+            ),
+          );
+        },
       ),
     );
   }

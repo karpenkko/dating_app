@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 
 class RoundSwipeButton extends StatelessWidget {
   final String path;

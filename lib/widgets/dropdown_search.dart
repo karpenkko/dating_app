@@ -2,7 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../colors.dart';
+import '../features/switching_themes/utils/colors.dart';
 import '../features/creating_profile/bloc/creating_profile_bloc.dart';
 
 class CustomDropdownSearch extends StatelessWidget {
@@ -29,14 +29,14 @@ class CustomDropdownSearch extends StatelessWidget {
         icon: SvgPicture.asset(
           'assets/icons/dropdown.svg',
           colorFilter:
-              const ColorFilter.mode(AppColor.blackColor, BlendMode.srcIn),
+               ColorFilter.mode(Theme.of(context).primaryColor, BlendMode.srcIn),
           height: 8,
         ),
       ),
       dropdownDecoratorProps: DropDownDecoratorProps(
-        baseStyle: const TextStyle(
+        baseStyle: TextStyle(
           fontFamily: 'Raleway',
-          color: AppColor.blackColor,
+          color: Theme.of(context).primaryColor,
           fontSize: 16.0,
           fontWeight: FontWeight.normal,
         ),
@@ -47,14 +47,14 @@ class CustomDropdownSearch extends StatelessWidget {
           hintText: title,
           hintStyle: TextStyle(
             fontFamily: 'Raleway',
-            color: AppColor.blackColor.withOpacity(0.8),
+            color: Theme.of(context).primaryColor.withOpacity(0.8),
             fontSize: 16.0,
             fontWeight: FontWeight.normal,
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: AppColor.blackColor,
+            borderSide: BorderSide(
+              color: Theme.of(context).primaryColor,
               width: 1,
             ),
           ),

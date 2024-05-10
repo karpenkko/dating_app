@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
+import '../features/switching_themes/utils/colors.dart';
 
 class LoginField extends StatelessWidget {
   final TextEditingController controller;
@@ -22,7 +22,7 @@ class LoginField extends StatelessWidget {
           contentPadding: EdgeInsets.only(left: 25, top: length, bottom: length),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
-              color: AppColor.blackColor.withOpacity(0.7),
+              color: Theme.of(context).primaryColor.withOpacity(0.7),
               width: 1,
             ),
             borderRadius: BorderRadius.circular(10),
@@ -36,13 +36,13 @@ class LoginField extends StatelessWidget {
           ),
           hintText: hintText,
           hintStyle: TextStyle(
-            color: AppColor.blackColor.withOpacity(0.8),
+            color: Theme.of(context).primaryColor.withOpacity(0.8),
             fontWeight: FontWeight.normal,
           ),
         ),
-        style: const TextStyle(
+        style: TextStyle(
           fontFamily: 'Raleway',
-          color: AppColor.blackColor,
+          color: Theme.of(context).primaryColor,
           fontSize: 16.0,
           fontWeight: FontWeight.normal,
         ),

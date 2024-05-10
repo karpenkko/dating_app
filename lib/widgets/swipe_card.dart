@@ -3,7 +3,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../colors.dart';
+import '../features/switching_themes/utils/colors.dart';
 
 class SwipeCard extends StatelessWidget {
   final String buttonText;
@@ -26,7 +26,7 @@ class SwipeCard extends StatelessWidget {
     ];
 
     return DottedBorder(
-      color: showDottedBorder? AppColor.blackColor : Colors.transparent,
+      color: showDottedBorder? Theme.of(context).primaryColor : Colors.transparent,
       strokeCap: StrokeCap.round,
       borderType: BorderType.RRect,
       dashPattern: const [8, 8],
@@ -34,7 +34,7 @@ class SwipeCard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         decoration: BoxDecoration(
-          color: AppColor.whiteColor,
+          color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
@@ -54,8 +54,8 @@ class SwipeCard extends StatelessWidget {
               children: [
                 Text(
                   buttonText,
-                  style: const TextStyle(
-                    color: AppColor.blackColor,
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
                     fontFamily: 'Raleway',
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
@@ -63,10 +63,10 @@ class SwipeCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                const Text(
+                Text(
                   '~ 23 ~',
                   style: TextStyle(
-                    color: AppColor.blackColor,
+                    color: Theme.of(context).primaryColor,
                     fontFamily: 'Raleway',
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
@@ -74,10 +74,10 @@ class SwipeCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                const Text(
+                Text(
                   'Київ',
                   style: TextStyle(
-                    color: AppColor.blackColor,
+                    color: Theme.of(context).primaryColor,
                     fontFamily: 'Raleway',
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
@@ -87,10 +87,10 @@ class SwipeCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 4),
-            const Text(
+            Text(
               'шукає: друзів',
               style: TextStyle(
-                color: AppColor.blackColor,
+                color: Theme.of(context).primaryColor,
                 fontFamily: 'Raleway',
                 fontWeight: FontWeight.normal,
                 fontSize: 16,

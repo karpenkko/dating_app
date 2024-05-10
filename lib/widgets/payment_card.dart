@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-import '../../colors.dart';
+import '../features/switching_themes/utils/colors.dart';
 import '../features/swipe_cards/bloc/swipe_cards_bloc.dart';
 
 class PaymentCard extends StatelessWidget {
@@ -56,7 +56,7 @@ class PaymentCard extends StatelessWidget {
                           ),
                           const SizedBox(height: 10),
                           const Text(
-                            'Для користування додатком без обмежень оформіть підписку.',
+                            'Для користування додатком без обмежень оформіть підписку',
                             style: TextStyle(
                               color: AppColor.blackColor,
                               fontFamily: 'Raleway',
@@ -71,11 +71,11 @@ class PaymentCard extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 12),
                             decoration: BoxDecoration(
-                              color: AppColor.greenColor,
+                              // color: AppColor.greenColor,
                               borderRadius: BorderRadius.circular(30),
-                              // border: Border.all(
-                              //   color: AppColor.blackColor,
-                              // ),
+                              border: Border.all(
+                                color: AppColor.greenColor,
+                              ),
                             ),
                             child: const Text(
                               '200 грн/місяць',

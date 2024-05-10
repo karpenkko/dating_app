@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 
 class RoundHobbies extends StatelessWidget {
   final String hobby;
@@ -22,17 +22,17 @@ class RoundHobbies extends StatelessWidget {
         padding: const EdgeInsets.only(
             left: 18, right: 18, top: 10, bottom: 10),
         decoration: BoxDecoration(
-          color: isSelected ? AppColor.pinkColor: AppColor.whiteColor,
+          color: isSelected ? AppColor.pinkColor: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected ? AppColor.pinkColor: AppColor.blackColor,
+            color: isSelected ? AppColor.pinkColor: Theme.of(context).primaryColor,
             width: 1,
           ),
         ),
         child: Text(
           hobby,
           style: TextStyle(
-            color: isSelected ? AppColor.whiteColor: AppColor.blackColor,
+            color: isSelected ? AppColor.whiteColor: Theme.of(context).primaryColor,
             fontFamily: 'Raleway',
             fontWeight: FontWeight.normal,
             fontSize: 16,

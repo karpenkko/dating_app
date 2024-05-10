@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../colors.dart';
+import '../features/switching_themes/utils/colors.dart';
 
 class CustomDropdownMenu extends StatelessWidget {
   final String? selectedItem;
@@ -23,14 +23,14 @@ class CustomDropdownMenu extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: AppColor.blackColor.withOpacity(0.7),
+            color: Theme.of(context).primaryColor.withOpacity(0.7),
             width: 1,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: AppColor.blackColor.withOpacity(0.7),
+            color: Theme.of(context).primaryColor.withOpacity(0.7),
             width: 1,
           ),
         ),
@@ -41,8 +41,8 @@ class CustomDropdownMenu extends StatelessWidget {
       ),
       icon: SvgPicture.asset(
         'assets/icons/dropdown.svg',
-        colorFilter: const ColorFilter.mode(
-          AppColor.blackColor,
+        colorFilter: ColorFilter.mode(
+          Theme.of(context).primaryColor,
           BlendMode.srcIn,
         ),
         height: 8,
@@ -52,7 +52,7 @@ class CustomDropdownMenu extends StatelessWidget {
         'Кого шукаєте',
         style: TextStyle(
           fontFamily: 'Raleway',
-          color: AppColor.blackColor.withOpacity(0.8),
+          color: Theme.of(context).primaryColor.withOpacity(0.8),
           fontSize: 16.0,
           fontWeight: FontWeight.normal,
         ),
@@ -68,9 +68,9 @@ class CustomDropdownMenu extends StatelessWidget {
               Expanded(
                 child: Text(
                   value,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: 'Raleway',
-                    color: AppColor.blackColor,
+                    color: Theme.of(context).primaryColor,
                     fontSize: 16.0,
                     fontWeight: FontWeight.normal,
                   ),

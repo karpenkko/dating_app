@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 
 class GenderButton extends StatelessWidget {
   final String? selectedGender;
@@ -35,7 +35,7 @@ class GenderButton extends StatelessWidget {
             border: Border.all(
               color: selectedGender == gender
                   ? AppColor.pinkColor
-                  : AppColor.blackColor.withOpacity(0.7),
+                  : Theme.of(context).primaryColor.withOpacity(0.7),
               width: 1,
             ),
           ),
@@ -43,8 +43,8 @@ class GenderButton extends StatelessWidget {
             buttonText,
             style: TextStyle(
               color: selectedGender == gender
-                  ? AppColor.whiteColor
-                  : AppColor.blackColor.withOpacity(0.8),
+                  ? Theme.of(context).scaffoldBackgroundColor
+                  : Theme.of(context).primaryColor.withOpacity(0.8),
               fontFamily: 'Raleway',
               fontWeight: FontWeight.normal,
               fontSize: 16,

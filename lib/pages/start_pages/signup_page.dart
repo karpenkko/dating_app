@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 import '../../widgets/login_button.dart';
 import '../../widgets/login_field.dart';
 
@@ -28,7 +28,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.whiteColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -37,19 +37,19 @@ class _SignupPageState extends State<SignupPage> {
               Expanded(
                 child: Container(),
               ),
-              const Text(
+              Text(
                 'Вхід',
                 style: TextStyle(
-                  color: AppColor.blackColor,
+                  color: Theme.of(context).primaryColor,
                   fontFamily: 'Raleway',
                   fontSize: 34,
                   height: 1.2,
                 ),
               ),
-              const Text(
+              Text(
                 'ще не маєте аккаунту?',
                 style: TextStyle(
-                  color: AppColor.blackColor,
+                  color: Theme.of(context).primaryColor,
                   fontFamily: 'Raleway',
                   fontWeight: FontWeight.w300,
                   fontSize: 18,
@@ -108,10 +108,10 @@ class _SignupPageState extends State<SignupPage> {
                     height: 25,
                   ),
                   const SizedBox(width: 8),
-                  const Text(
+                  Text(
                     'Dator',
                     style: TextStyle(
-                      color: AppColor.blackColor,
+                      color:Theme.of(context).primaryColor,
                       fontFamily: 'Raleway',
                       fontSize: 20,
                     ),

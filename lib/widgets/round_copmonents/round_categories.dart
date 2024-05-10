@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 
 class RoundCategories extends StatelessWidget {
   final String hobby;
@@ -24,8 +24,8 @@ class RoundCategories extends StatelessWidget {
       ),
       child: Text(
         hobby,
-        style: const TextStyle(
-          color: AppColor.blackColor,
+        style: TextStyle(
+          color: Theme.of(context).primaryColor,
           fontFamily: 'Raleway',
           fontWeight: FontWeight.normal,
           fontSize: 16,

@@ -1,15 +1,10 @@
-import 'dart:convert';
-
 import 'package:dating_app/widgets/round_copmonents/round_title.dart';
 import 'package:dating_app/widgets/swipe_card.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
-import '../../../colors.dart';
 import '../../../widgets/payment_card.dart';
 import '../bloc/swipe_cards_bloc.dart';
 
@@ -61,7 +56,7 @@ class _SwipePageState extends State<SwipePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.whiteColor,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: BlocConsumer<SwipeCardsBloc, SwipeCardsState>(
         listenWhen: (previous, current) => current is SwipeCardsActionState,
         buildWhen: (previous, current) => current is! SwipeCardsActionState,

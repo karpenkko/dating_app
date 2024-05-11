@@ -1,11 +1,11 @@
 import 'package:dating_app/widgets/round_copmonents/round_title.dart';
-import 'package:dating_app/widgets/swipe_card.dart';
+import 'package:dating_app/widgets/cards/swipe_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
-import '../../../widgets/payment_card.dart';
+import '../../../widgets/cards/payment_card.dart';
 import '../bloc/swipe_cards_bloc.dart';
 
 

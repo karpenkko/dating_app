@@ -1,11 +1,11 @@
 import 'package:dating_app/widgets/round_copmonents/round_title.dart';
-import 'package:dating_app/widgets/swipe_card.dart';
+import 'package:dating_app/widgets/cards/swipe_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/theme_bloc.dart';
-import '../utils/colors.dart';
-import '../utils/themes.dart';
+import '../../switching_themes/bloc/theme_bloc.dart';
+import '../../switching_themes/utils/colors.dart';
+import '../../switching_themes/utils/themes.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({super.key});

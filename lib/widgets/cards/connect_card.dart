@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../features/switching_themes/utils/colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 
 class ConnectCard extends StatelessWidget {
   final String buttonText;

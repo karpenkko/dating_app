@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../features/switching_themes/utils/colors.dart';
-
 class CustomDropdownMenu extends StatelessWidget {
   final String? selectedItem;
   final List<String> options;

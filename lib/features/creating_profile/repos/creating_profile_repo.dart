@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 class CreatingProfileRepo {
-  static Future<List<dynamic>> fetchRegions() async {
+  Future<List<dynamic>> fetchRegions() async {
     var client = http.Client();
     try {
       var regionsResponse = await client.post(Uri.parse(
@@ -20,14 +20,14 @@ class CreatingProfileRepo {
     }
   }
 
-  static Future<List<dynamic>> fetchCommunities() async {
+  Future<List<dynamic>> fetchCommunities() async {
     var client = http.Client();
     try {
       var communitiesResponse = await client.post(Uri.parse(
           'https://decentralization.ua/graphql?query={communities{title,id,area_name}}'));
 
       Map<String, dynamic> communitiesData =
-      json.decode(communitiesResponse.body);
+          json.decode(communitiesResponse.body);
       List<dynamic> communities = communitiesData['data']['communities'];
 
       return communities;
@@ -37,7 +37,7 @@ class CreatingProfileRepo {
     }
   }
 
-  static Future<List<dynamic>> fetchCities(int desiredCommunityId) async {
+  Future<List<dynamic>> fetchCities(int desiredCommunityId) async {
     var client = http.Client();
     try {
       var citesResponse = await client.post(Uri.parse(
@@ -51,5 +51,19 @@ class CreatingProfileRepo {
       log(e.toString());
       return [];
     }
+  }
+
+  Future<void> createProfile(
+    String photo,
+    String name,
+    int age,
+    String? gender,
+    String? phone,
+    String? searchPurpose,
+    String? city,
+    List<String> hobbies,
+  ) {
+
+    return Future.value();
   }
 }

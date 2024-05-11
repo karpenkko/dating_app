@@ -11,14 +11,13 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../widgets/dropdowns/dropdown_search.dart';
+import '../../../widgets/login_elements/login_field.dart';
 import '../../../widgets/phone_field.dart';
 import '../bloc/creating_profile_bloc.dart';
-import '../../switching_themes/utils/colors.dart';
 import '../../../widgets/buttons/big_button.dart';
 import '../../../widgets/buttons/icon_button.dart';
-import '../../../widgets/dropdown_search.dart';
-import '../../../widgets/login_field.dart';
-import '../../../widgets/dropdown_menu.dart';
+import '../../../widgets/dropdowns/dropdown_menu.dart';
 import '../../../widgets/round_copmonents/round_hobbies.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -113,6 +112,13 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return false;
+    } else if (phoneNumber!.length != 13) {
+      final snackBar = CustomSnackBar(
+        context: context,
+        text: 'Номер телефону має містити 9 цифр',
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      return false;
     } else {
       return true;
     }
@@ -127,7 +133,13 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
             current is CreatingProfileActionState,
         buildWhen: (previous, current) =>
             current is! CreatingProfileActionState,
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is CreatingProfileSuccess) {
+            // context.go('/swipe');
+          } else if (state is CreatingProfileFailed){
+            print('error');
+          }
+        },
         builder: (context, state) {
           if (state is CreatingProfileInitial) {
             return const Center(
@@ -350,20 +362,18 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                         buttonText: 'Розпочати',
                         onTap: () {
                           if (_validateFields()) {
-                            // BlocProvider.of<CreatingProfileBloc>(context).add(
-                            //   CreatingProfileValidateEvent(
-                            //     _image,
-                            //     nameController.text,
-                            //     int.parse(ageController.text),
-                            //     selectedGender,
-                            //     phoneNumber,
-                            //
-                            //
-                            //   ),
-                            // );
-                            print('good');
-                            context.go('/swipe');
+                            BlocProvider.of<CreatingProfileBloc>(context).add(
+                              CreatingProfileValidateEvent(
+                                _image,
+                                nameController.text,
+                                int.parse(ageController.text),
+                                selectedGender,
+                                phoneNumber,
+                                selectedItem,
+                              ),
+                            );
                           }
+                          context.go('/swipe');
                         },
                       ),
                     ],

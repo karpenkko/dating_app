@@ -1,8 +1,8 @@
 import 'package:dating_app/widgets/round_copmonents/round_title.dart';
 import 'package:flutter/material.dart';
 
-import '../../features/switching_themes/utils/colors.dart';
-import '../../widgets/connect_card.dart';
+import '../../switching_themes/utils/colors.dart';
+import '../../../widgets/cards/connect_card.dart';
 
 class ConnectPage extends StatelessWidget {
   const ConnectPage({super.key});

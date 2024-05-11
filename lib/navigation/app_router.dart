@@ -1,14 +1,14 @@
-import 'package:dating_app/features/switching_themes/ui/profile_page.dart';
+import 'package:dating_app/features/user_profile/ui/profile_page.dart';
 import 'package:dating_app/features/swipe_cards/ui/swipe_page.dart';
-import 'package:dating_app/pages/home_pages/connect_page.dart';
-import 'package:dating_app/pages/home_pages/wrap_home_page.dart';
+import 'package:dating_app/features/user_connections/ui/connect_page.dart';
+import 'package:dating_app/navigation/wrap_home_page.dart';
 import 'package:dating_app/features/auth/ui/intro_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'features/auth/ui/signup_page.dart';
-import 'features/auth/ui/login_page.dart';
-import 'features/creating_profile/ui/creating_profile_page.dart';
+import '../features/auth/ui/signup_page.dart';
+import '../features/auth/ui/login_page.dart';
+import '../features/creating_profile/ui/creating_profile_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _sectionNavigatorKey = GlobalKey<NavigatorState>();

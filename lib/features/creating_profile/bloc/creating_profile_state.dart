@@ -22,3 +22,10 @@ final class CreatingProfileLoading extends CreatingProfileState {
     required this.selectedHobbies,
   });
 }
+
+final class CreatingProfileSuccess extends CreatingProfileState {}
+
+final class CreatingProfileFailed extends CreatingProfileState {
+  final String error;
+  CreatingProfileFailed(this.error);
+}

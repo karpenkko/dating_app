@@ -5,9 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../widgets/custom_snackbar.dart';
+import '../../../widgets/login_elements/login_field.dart';
 import '../../switching_themes/utils/colors.dart';
-import '../../../widgets/login_button.dart';
-import '../../../widgets/login_field.dart';
+import '../../../widgets/login_elements/login_button.dart';
 import '../bloc/auth_bloc.dart';
 
 class LoginPage extends StatefulWidget {

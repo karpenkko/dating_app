@@ -3,7 +3,6 @@ import 'dart:typed_data';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../repos/creating_profile_repo.dart';
@@ -13,7 +12,9 @@ part 'creating_profile_state.dart';
 
 class CreatingProfileBloc
     extends Bloc<CreatingProfileEvent, CreatingProfileState> {
-  CreatingProfileBloc() : super(CreatingProfileInitial()) {
+  final CreatingProfileRepo _creatingProfileRepo;
+
+  CreatingProfileBloc(this._creatingProfileRepo) : super(CreatingProfileInitial()) {
     on<CreatingProfileFetchEvent>(creatingProfileFetchEvent);
     on<RegionDropdownValueChangedEvent>(regionDropdownValueChangedEvent);
     on<CommunityDropdownValueChangedEvent>(communityDropdownValueChangedEvent);
@@ -59,8 +60,7 @@ class CreatingProfileBloc
 
   FutureOr<void> creatingProfileFetchEvent(CreatingProfileFetchEvent event,
       Emitter<CreatingProfileState> emit) async {
-
-    List<dynamic> areas = await CreatingProfileRepo.fetchRegions();
+    List<dynamic> areas = await _creatingProfileRepo.fetchRegions();
 
     regions = areas.map((area) => area['title'].toString()).toList();
 
@@ -78,16 +78,15 @@ class CreatingProfileBloc
   FutureOr<void> regionDropdownValueChangedEvent(
       RegionDropdownValueChangedEvent event,
       Emitter<CreatingProfileState> emit) async {
-
     communitiesMap.clear();
     communitiesList.clear();
-    List<dynamic> communities = await CreatingProfileRepo.fetchCommunities();
+    List<dynamic> communities = await _creatingProfileRepo.fetchCommunities();
     region = event.selectedRegion;
 
     communitiesMap = communities
         .where((community) => community['area_name'] == region)
-        .map((community) =>
-    {'title': community['title'], 'id': community['id']})
+        .map(
+            (community) => {'title': community['title'], 'id': community['id']})
         .toList();
 
     communitiesList = communities
@@ -122,7 +121,8 @@ class CreatingProfileBloc
     if (community == 'Київ') {
       cities = ['Київ'];
     } else {
-      List<dynamic> citiesResult = await CreatingProfileRepo.fetchCities(desiredCommunityId);
+      List<dynamic> citiesResult =
+          await _creatingProfileRepo.fetchCities(desiredCommunityId);
 
       for (var city in citiesResult) {
         cities.add(city['title']);
@@ -148,7 +148,8 @@ class CreatingProfileBloc
     print('Місто - $city');
   }
 
-  FutureOr<void> hobbiesAddedEvent(HobbiesAddedEvent event, Emitter<CreatingProfileState> emit) {
+  FutureOr<void> hobbiesAddedEvent(
+      HobbiesAddedEvent event, Emitter<CreatingProfileState> emit) {
     selectedHobbies.add(event.selectedHobby);
     emit(
       CreatingProfileLoading(
@@ -161,7 +162,8 @@ class CreatingProfileBloc
     );
   }
 
-  FutureOr<void> hobbiesRemovedEvent(HobbiesRemovedEvent event, Emitter<CreatingProfileState> emit) {
+  FutureOr<void> hobbiesRemovedEvent(
+      HobbiesRemovedEvent event, Emitter<CreatingProfileState> emit) {
     selectedHobbies.remove(event.selectedHobby);
     emit(
       CreatingProfileLoading(
@@ -174,15 +176,38 @@ class CreatingProfileBloc
     );
   }
 
-  FutureOr<void> creatingProfileValidateEvent(CreatingProfileValidateEvent event, Emitter<CreatingProfileState> emit) {
-    emit(
-      CreatingProfileLoading(
-        regions: regions,
-        communities: communitiesList,
-        cities: cities,
-        hobbies: hobbies,
-        selectedHobbies: selectedHobbies,
-      ),
-    );
+  FutureOr<void> creatingProfileValidateEvent(
+      CreatingProfileValidateEvent event,
+      Emitter<CreatingProfileState> emit) {
+    print(event.searchPurpose);
+    print(event.phone);
+    print(event.name);
+    print(event.age);
+    print(event.gender);
+
+    emit(CreatingProfileSuccess());
+
+
+    // List<int> photoCode= event.photo!.toList();
+    // String photo = base64Encode(photoCode);
+
+
+
+    // try {
+    //   final result = await _creatingProfileRepo.createProfile(
+    //     photo,
+    //     event.name,
+    //     event.age,
+    //     event.gender,
+    //     event.phone,
+    //     event.searchPurpose,
+    //     city,
+    //     hobbies,
+    //   );
+    //   emit(CreatingProfileSuccess());
+    //   print('реєстрація');
+    // } catch (e) {
+    //   emit(CreatingProfileFailed(e.toString()));
+    // }
   }
 }

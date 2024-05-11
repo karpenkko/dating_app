@@ -9,7 +9,8 @@ part 'swipe_cards_event.dart';
 part 'swipe_cards_state.dart';
 
 class SwipeCardsBloc extends Bloc<SwipeCardsEvent, SwipeCardsState> {
-  SwipeCardsBloc() : super(SwipeCardsInitial()) {
+  final SwipingCardsRepo _swipingCardsRepo;
+  SwipeCardsBloc(this._swipingCardsRepo) : super(SwipeCardsInitial()) {
     on<SwipeCardsFetchEvent>(swipeCardsFetchEvent);
     on<SwipeCardsRightEvent>(swipeCardsRightEvent);
     on<SwipeCardsLeftEvent>(swipeCardsLeftEvent);

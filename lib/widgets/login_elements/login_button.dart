@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../features/switching_themes/utils/colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 
 class LoginButton extends StatefulWidget {
   final String buttonText;

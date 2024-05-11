@@ -10,8 +10,6 @@ class LoginLoadingState extends AuthState {
 }
 
 class LoginLoadedState extends AuthState {
-  // final String accessToken;
-  // LoginLoadedState(this.accessToken);
 }
 
 class LoginErrorState extends AuthState {

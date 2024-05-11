@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-import '../features/switching_themes/utils/colors.dart';
-import '../features/swipe_cards/bloc/swipe_cards_bloc.dart';
+import '../../features/switching_themes/utils/colors.dart';
+import '../../features/swipe_cards/bloc/swipe_cards_bloc.dart';
 
 class PaymentCard extends StatelessWidget {
 

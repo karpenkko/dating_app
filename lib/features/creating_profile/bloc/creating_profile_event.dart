@@ -36,9 +36,7 @@ class CreatingProfileValidateEvent extends CreatingProfileEvent {
   final int age;
   final String? gender;
   final String? phone;
-  final String searchPurpose;
-  final String city;
-  final List<String> hobbies;
+  final String? searchPurpose;
 
   CreatingProfileValidateEvent(
     this.photo,
@@ -47,7 +45,5 @@ class CreatingProfileValidateEvent extends CreatingProfileEvent {
       this.gender,
       this.phone,
       this.searchPurpose,
-      this.city,
-      this.hobbies,
   );
 }

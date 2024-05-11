@@ -3,7 +3,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../features/switching_themes/utils/colors.dart';
+import '../../features/switching_themes/utils/colors.dart';
 
 class SwipeCard extends StatelessWidget {
   final String buttonText;

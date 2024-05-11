@@ -2,9 +2,6 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../features/switching_themes/utils/colors.dart';
-import '../features/creating_profile/bloc/creating_profile_bloc.dart';
-
 class CustomDropdownSearch extends StatelessWidget {
   final bool isEnable;
   final List<String> items;

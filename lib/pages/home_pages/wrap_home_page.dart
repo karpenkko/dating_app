@@ -43,6 +43,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+        // color: Colors.transparent,
       ),
       padding: const EdgeInsets.all(10.0),
       child: ClipRRect(

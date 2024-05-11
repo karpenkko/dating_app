@@ -33,15 +33,50 @@ class _ProfilePageState extends State<ProfilePage> {
                   showDottedBorder: false,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               BlocBuilder<ThemeBloc, ThemeData>(
                 builder: (context, state) {
-                  return Switch(
-                    value: state == AppThemes.appThemeData[AppTheme.darkTheme],
-                    onChanged: (bool val) {
-                      BlocProvider.of<ThemeBloc>(context)
-                          .add(ThemeSwitchEvent());
-                    },
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'тема',
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontFamily: 'Raleway',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                          height: 1.2,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Switch(
+                        activeTrackColor: AppColor.purpleColor,
+                        inactiveTrackColor:
+                            Theme.of(context).scaffoldBackgroundColor,
+                        inactiveThumbColor: Theme.of(context).primaryColor,
+                        trackOutlineColor:
+                            MaterialStateColor.resolveWith((states) {
+                          if (states.contains(MaterialState.disabled)) {
+                            return Theme.of(context).scaffoldBackgroundColor;
+                          }
+                          return Theme.of(context).primaryColor;
+                        }),
+                        trackOutlineWidth:
+                            MaterialStateProperty.resolveWith((states) {
+                          if (states.contains(MaterialState.disabled)) {
+                            return 1;
+                          }
+                          return 1;
+                        }),
+                        value:
+                            state == AppThemes.appThemeData[AppTheme.darkTheme],
+                        onChanged: (bool val) {
+                          BlocProvider.of<ThemeBloc>(context)
+                              .add(ThemeSwitchEvent());
+                        },
+                      ),
+                    ],
                   );
                 },
               ),

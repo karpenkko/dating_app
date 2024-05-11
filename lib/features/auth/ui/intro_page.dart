@@ -8,7 +8,7 @@ class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 2), () => context.push('/login'));
+    Timer(const Duration(seconds: 2), () => context.push('/signup'));
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(

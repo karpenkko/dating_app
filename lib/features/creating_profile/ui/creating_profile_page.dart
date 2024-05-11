@@ -1,12 +1,14 @@
 import 'dart:typed_data';
 
-import 'package:dating_app/utils/select_img.dart';
+import 'package:dating_app/features/creating_profile/utils/select_img.dart';
 import 'package:dating_app/widgets/buttons/gender_button.dart';
+import 'package:dating_app/widgets/custom_snackbar.dart';
 import 'package:dating_app/widgets/round_copmonents/round_title.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../widgets/phone_field.dart';
@@ -60,7 +62,11 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
   late String name;
   late int? age;
   String? selectedGender;
+  late String? phoneNumber;
 
+  void handlePhoneNumber(String? number) {
+    phoneNumber = number;
+  }
 
   String? selectedItem;
   final List<String> options = [
@@ -75,7 +81,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
     showModalBottomSheet(
       isScrollControlled: true,
       context: context,
-      builder: (context) => HobbiesPage(),
+      builder: (context) => const HobbiesPage(),
     );
   }
 
@@ -89,17 +95,23 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
     if (nameController.text.isEmpty ||
         ageController.text.isEmpty ||
         selectedGender == null ||
+        phoneNumber == null ||
         finalRegion == null ||
         finalCommunity == null ||
         finalCity == null ||
         finalHobbies.length < 3) {
-      const snackBar = SnackBar(
-        content: Text('Заповніть всі поля'),
+      final snackBar = CustomSnackBar(
+        context: context,
+        text: 'Заповніть всі поля',
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      Future.delayed(const Duration(seconds: 3), () {
-        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      });
+      return false;
+    } else if (int.tryParse(ageController.text) == null) {
+      final snackBar = CustomSnackBar(
+        context: context,
+        text: 'Вік має бути цілим числом',
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return false;
     } else {
       return true;
@@ -111,7 +123,6 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: BlocConsumer<CreatingProfileBloc, CreatingProfileState>(
-        // bloc: creatingProfileBloc,
         listenWhen: (previous, current) =>
             current is CreatingProfileActionState,
         buildWhen: (previous, current) =>
@@ -213,7 +224,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      PhoneField(),
+                      PhoneField(onPhoneNumberChanged: handlePhoneNumber),
                       //PHONE NUMBER
                       const SizedBox(height: 20),
 
@@ -303,7 +314,8 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                                           Text(
                                             'оберіть від 3 до 5 пунктів',
                                             style: TextStyle(
-                                              color: Theme.of(context).primaryColor
+                                              color: Theme.of(context)
+                                                  .primaryColor
                                                   .withOpacity(0.8),
                                               fontFamily: 'Raleway',
                                               fontSize: 16,
@@ -338,7 +350,19 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                         buttonText: 'Розпочати',
                         onTap: () {
                           if (_validateFields()) {
+                            // BlocProvider.of<CreatingProfileBloc>(context).add(
+                            //   CreatingProfileValidateEvent(
+                            //     _image,
+                            //     nameController.text,
+                            //     int.parse(ageController.text),
+                            //     selectedGender,
+                            //     phoneNumber,
+                            //
+                            //
+                            //   ),
+                            // );
                             print('good');
+                            context.go('/swipe');
                           }
                         },
                       ),

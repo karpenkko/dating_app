@@ -18,13 +18,21 @@ class SwipeCardsBloc extends Bloc<SwipeCardsEvent, SwipeCardsState> {
 
   final List<String> names = ['Настя', 'Олександр', 'Аня', 'Олеггг', 'Aнтон'];
   final List<String> names2 = ['Гедеон', 'Данте', 'Аід'];
-  int counter = 30;
+  // final List<Map<String, dynamic>> names2 = [
+  //   {'id': 1, 'name': 'Гедеон',},
+  //   {'id': 2, 'name': 'Данте',},
+  //   {'id': 3, 'name': 'Аід',},
+  //   {'id': 4, 'name': 'Аід2',},
+  //   {'id': 5, 'name': 'Аід3',},
+  //   {'id': 6, 'name': 'Аід4',},
+  //   {'id': 7, 'name': 'Аід5',},];
+  int counter = 20;
 
   FutureOr<void> swipeCardsFetchEvent(SwipeCardsFetchEvent event, Emitter<SwipeCardsState> emit) {
     counter = counter - 10;
     if (counter == 20) {
       emit(SwipeCardsLoading(names));
-    } if (counter != 0){
+    } else if (counter != 0){
       emit(SwipeCardsLoading(names2));
     } else {
       emit(SwipeCardsEnded());
@@ -49,7 +57,7 @@ class SwipeCardsBloc extends Bloc<SwipeCardsEvent, SwipeCardsState> {
 
     await SwipingCardsRepo.fetchPresentPaymentSheet();
 
-    counter = 20;
+    // counter = 20;
     emit(SwipeCardsLoading(names));
   }
 }

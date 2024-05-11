@@ -1,12 +1,14 @@
-import 'package:dating_app/pages/home_pages/connect_page.dart';
 import 'package:dating_app/features/switching_themes/ui/profile_page.dart';
 import 'package:dating_app/features/swipe_cards/ui/swipe_page.dart';
+import 'package:dating_app/pages/home_pages/connect_page.dart';
 import 'package:dating_app/pages/home_pages/wrap_home_page.dart';
-import 'package:dating_app/pages/start_pages/intro_page.dart';
-import 'package:dating_app/pages/start_pages/login_page.dart';
-import 'package:dating_app/pages/start_pages/signup_page.dart';
+import 'package:dating_app/features/auth/ui/intro_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import 'features/auth/ui/signup_page.dart';
+import 'features/auth/ui/login_page.dart';
+import 'features/creating_profile/ui/creating_profile_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _sectionNavigatorKey = GlobalKey<NavigatorState>();
@@ -21,16 +23,21 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const IntroPage(),
     ),
     GoRoute(
-      name: 'login',
-      path: '/login',
-      builder: (context, state) => const LoginPage(),
+      name: 'signup',
+      path: '/signup',
+      builder: (context, state) => const SignupPage(),
       routes: [
         GoRoute(
-          name: 'signup',
-          path: 'signup',
-          builder: (context, state) => const SignupPage(),
+          name: 'login',
+          path: 'login',
+          builder: (context, state) => const LoginPage(),
         ),
       ]
+    ),
+    GoRoute(
+      name: 'create-profile',
+      path: '/create-profile',
+      builder: (context, state) => const CreatingProfilePage(),
     ),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {

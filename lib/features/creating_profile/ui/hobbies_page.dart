@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../widgets/custom_snackbar.dart';
 import '../../switching_themes/utils/colors.dart';
 import '../../../widgets/buttons/big_button.dart';
 import '../../../widgets/round_copmonents/round_hobbies.dart';
@@ -76,13 +77,11 @@ class _HobbiesPageState extends State<HobbiesPage> {
                     buttonText: 'Готово',
                     onTap: () {
                       if(state.selectedHobbies.length < 3){
-                        const snackBar = SnackBar(
-                          content: Text('Оберіть від 3 до 5 пунктів'),
+                        final snackBar = CustomSnackBar(
+                          context: context,
+                          text: 'Оберіть від 3 до 5 пунктів',
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                        Future.delayed(const Duration(seconds: 3), () {
-                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        });
                       }
                       else {
                         Navigator.pop(context);

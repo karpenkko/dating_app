@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-
-import '../features/switching_themes/utils/colors.dart';
 
 class PhoneField extends StatelessWidget {
   final FocusNode focusNode = FocusNode();
+  final Function(String) onPhoneNumberChanged;
 
-  PhoneField({super.key});
+  PhoneField({super.key, required this.onPhoneNumberChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +74,7 @@ class PhoneField extends StatelessWidget {
       initialCountryCode: 'UA',
       languageCode: "ua",
       onChanged: (phone) {
+        onPhoneNumberChanged(phone.completeNumber);
         print(phone.completeNumber);
       },
     );

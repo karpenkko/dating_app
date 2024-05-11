@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'app_router.dart';
+import 'features/auth/bloc/auth_bloc.dart';
+import 'features/auth/repos/auth_repo.dart';
 import 'features/creating_profile/bloc/creating_profile_bloc.dart';
 import 'features/swipe_cards/bloc/swipe_cards_bloc.dart';
 
@@ -23,6 +25,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(AuthRepository(),),
+        ),
         BlocProvider<CreatingProfileBloc>(
           create: (context) => CreatingProfileBloc(),
         ),

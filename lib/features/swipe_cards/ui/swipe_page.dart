@@ -41,6 +41,7 @@ class _SwipePageState extends State<SwipePage> {
     if (direction.name == 'right') {
       BlocProvider.of<SwipeCardsBloc>(context)
           .add(SwipeCardsRightEvent(previousIndex));
+      print('$previousIndex');
     } else {
       BlocProvider.of<SwipeCardsBloc>(context)
           .add(SwipeCardsLeftEvent(previousIndex));
@@ -89,7 +90,7 @@ class _SwipePageState extends State<SwipePage> {
                         controller: controller,
                         onSwipe: _onSwipe,
                         cardsCount: state.names.length,
-                        numberOfCardsDisplayed: 3,
+                        numberOfCardsDisplayed: 2,
                         backCardOffset: const Offset(0, 0),
                         cardBuilder: (
                           context,

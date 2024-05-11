@@ -6,17 +6,21 @@ class LoginField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final double length;
+  final bool obscureText;
+
 
   const LoginField({
     super.key,
     required this.controller,
     required this.hintText,
     required this.length,
+    this.obscureText = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        obscureText: obscureText,
         controller: controller,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(left: 25, top: length, bottom: length),

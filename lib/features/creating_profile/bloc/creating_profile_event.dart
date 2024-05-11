@@ -3,7 +3,7 @@ part of 'creating_profile_bloc.dart';
 @immutable
 sealed class CreatingProfileEvent {}
 
-class CreatingProfileFetchEvent extends CreatingProfileEvent{}
+class CreatingProfileFetchEvent extends CreatingProfileEvent {}
 
 class RegionDropdownValueChangedEvent extends CreatingProfileEvent {
   final String selectedRegion;
@@ -30,4 +30,24 @@ class HobbiesRemovedEvent extends CreatingProfileEvent {
   HobbiesRemovedEvent(this.selectedHobby);
 }
 
-class CreatingProfileValidateEvent extends CreatingProfileEvent{}
+class CreatingProfileValidateEvent extends CreatingProfileEvent {
+  final Uint8List? photo;
+  final String name;
+  final int age;
+  final String? gender;
+  final String? phone;
+  final String searchPurpose;
+  final String city;
+  final List<String> hobbies;
+
+  CreatingProfileValidateEvent(
+    this.photo,
+      this.name,
+      this.age,
+      this.gender,
+      this.phone,
+      this.searchPurpose,
+      this.city,
+      this.hobbies,
+  );
+}

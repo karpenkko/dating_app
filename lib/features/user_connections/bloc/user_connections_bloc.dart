@@ -5,6 +5,7 @@ import 'package:meta/meta.dart';
 
 import '../../user_profile/models/user_model.dart';
 import '../repos/user_connections_repo.dart';
+import 'package:dating_app/data.dart';
 
 part 'user_connections_event.dart';
 part 'user_connections_state.dart';
@@ -16,5 +17,6 @@ class UserConnectionsBloc extends Bloc<UserConnectionsEvent, UserConnectionsStat
   }
 
   FutureOr<void> userConnectionsFetchEvent(UserConnectionsFetchEvent event, Emitter<UserConnectionsState> emit) async{
+    emit(UserConnectionsFetch(freeUsers));
   }
 }

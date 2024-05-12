@@ -6,24 +6,25 @@ import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../features/switching_themes/utils/colors.dart';
+import '../../features/user_profile/models/user_model.dart';
 
 class ConnectCard extends StatelessWidget {
-  final String buttonText;
+  final UserModel user;
 
   const ConnectCard({
     super.key,
-    required this.buttonText,
+    required this.user,
   });
 
   @override
   Widget build(BuildContext context) {
-    final List<String> hobbies = [
-      'фотографія',
-      'кулінарія',
-      'книги',
-      'психологія',
-      'спорт'
-    ];
+    // final List<String> hobbies = [
+    //   'фотографія',
+    //   'кулінарія',
+    //   'книги',
+    //   'психологія',
+    //   'спорт'
+    // ];
 
     return DottedBorder(
       color: Theme.of(context).primaryColor,
@@ -48,7 +49,7 @@ class ConnectCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
-                      'assets/woman.jpg',
+                      '${user.photo}',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -58,7 +59,7 @@ class ConnectCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      buttonText,
+                      '${user.name}',
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontFamily: 'Raleway',
@@ -68,7 +69,7 @@ class ConnectCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '23, Київ',
+                      '${user.age}, Київ',
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontFamily: 'Raleway',
@@ -81,7 +82,7 @@ class ConnectCard extends StatelessWidget {
                     SizedBox(
                       width: 140,
                       child: Text(
-                        'шукає: партнера (дівчину)',
+                        'шукає: друзів',
                         style: TextStyle(
                           color: Theme.of(context).primaryColor,
                           fontFamily: 'Raleway',
@@ -102,7 +103,7 @@ class ConnectCard extends StatelessWidget {
               spacing: 8.0,
               runSpacing: 8.0,
               alignment: WrapAlignment.center,
-              children: hobbies.map((hobby) {
+              children: user.hobbies!.map((hobby) {
                 return RoundCategories(
                   hobby: hobby,
                 );
@@ -113,7 +114,7 @@ class ConnectCard extends StatelessWidget {
               onTap: () async {
                 final Uri url = Uri(
                   scheme: 'tel',
-                  path: '+380972397041',
+                  path: '+380996494208',
                 );
                 if(await canLaunchUrl(url)) {
                   await launchUrl(url);

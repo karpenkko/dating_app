@@ -4,14 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/switching_themes/utils/colors.dart';
+import '../../features/user_profile/models/user_model.dart';
 
 class SwipeCard extends StatelessWidget {
-  final String buttonText;
+  final UserModel user;
   final bool showDottedBorder;
 
   const SwipeCard({
     super.key,
-    required this.buttonText,
+    required this.user,
     required this.showDottedBorder,
   });
 
@@ -43,7 +44,7 @@ class SwipeCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  'assets/woman.jpg',
+                  '${user.photo}',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -53,7 +54,7 @@ class SwipeCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  buttonText,
+                  '${user.name}',
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontFamily: 'Raleway',
@@ -64,7 +65,7 @@ class SwipeCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  '~ 23 ~',
+                  '~ ${user.age} ~',
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontFamily: 'Raleway',
@@ -102,7 +103,7 @@ class SwipeCard extends StatelessWidget {
               spacing: 8.0,
               runSpacing: 8.0,
               alignment: WrapAlignment.center,
-              children: hobbies.map((hobby) {
+              children: user.hobbies!.map((hobby) {
                 return RoundCategories(
                   hobby: hobby,
                 );

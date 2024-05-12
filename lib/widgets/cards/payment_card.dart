@@ -18,7 +18,7 @@ class PaymentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 40),
         child: Column(
           children: [
             const RoundTitle(titleText: 'пошук піплов'),

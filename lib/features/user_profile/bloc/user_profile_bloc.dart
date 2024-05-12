@@ -5,6 +5,7 @@ import 'package:dating_app/features/user_profile/models/user_model.dart';
 import 'package:meta/meta.dart';
 
 import '../repos/user_profile_repo.dart';
+import 'package:dating_app/data.dart';
 
 part 'user_profile_event.dart';
 part 'user_profile_state.dart';
@@ -15,7 +16,8 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
     on<UserProfileFetchEvent>(userProfileFetchEvent);
   }
 
-  FutureOr<void> userProfileFetchEvent(UserProfileFetchEvent event, Emitter<UserProfileState> emit) async{
-
+  FutureOr<void> userProfileFetchEvent(UserProfileFetchEvent event, Emitter<UserProfileState> emit){
+    print('bloc');
+    emit(UserProfileFetch(user[0]));
   }
 }

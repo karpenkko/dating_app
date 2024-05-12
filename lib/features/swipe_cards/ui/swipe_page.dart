@@ -70,7 +70,7 @@ class _SwipePageState extends State<SwipePage> {
           } else if (state is SwipeCardsLoading) {
             return Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 40),
                 child: Column(
                   children: [
                     const RoundTitle(titleText: 'пошук піплов'),
@@ -89,7 +89,7 @@ class _SwipePageState extends State<SwipePage> {
                         ),
                         controller: controller,
                         onSwipe: _onSwipe,
-                        cardsCount: state.names.length,
+                        cardsCount: state.users.length,
                         numberOfCardsDisplayed: 2,
                         backCardOffset: const Offset(0, 0),
                         cardBuilder: (
@@ -99,7 +99,7 @@ class _SwipePageState extends State<SwipePage> {
                           verticalThresholdPercentage,
                         ) =>
                             SwipeCard(
-                          buttonText: state.names[index],
+                          user: state.users[index],
                           showDottedBorder: true,
                         ),
                       ),

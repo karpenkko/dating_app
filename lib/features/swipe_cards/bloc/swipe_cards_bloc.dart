@@ -5,6 +5,12 @@ import 'package:dating_app/features/swipe_cards/repos/swiping_cards_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
+import 'package:dating_app/data.dart';
+
+import '../../user_profile/models/user_model.dart';
+
+
+
 part 'swipe_cards_event.dart';
 part 'swipe_cards_state.dart';
 
@@ -17,8 +23,8 @@ class SwipeCardsBloc extends Bloc<SwipeCardsEvent, SwipeCardsState> {
     on<SwipeCardsPaymentEvent>(swipeCardsPaymentEvent);
   }
 
-  final List<String> names = ['Настя', 'Олександр', 'Аня', 'Олеггг', 'Aнтон'];
-  final List<String> names2 = ['Гедеон', 'Данте', 'Аід'];
+  // final List<String> names = ['Настя', 'Олександр', 'Аня', 'Олеггг', 'Aнтон'];
+  // final List<String> names2 = ['Гедеон', 'Данте', 'Аід'];
   // final List<Map<String, dynamic>> names2 = [
   //   {'id': 1, 'name': 'Гедеон',},
   //   {'id': 2, 'name': 'Данте',},
@@ -32,9 +38,9 @@ class SwipeCardsBloc extends Bloc<SwipeCardsEvent, SwipeCardsState> {
   FutureOr<void> swipeCardsFetchEvent(SwipeCardsFetchEvent event, Emitter<SwipeCardsState> emit) {
     counter = counter - 10;
     if (counter == 20) {
-      emit(SwipeCardsLoading(names));
+      emit(SwipeCardsLoading(users));
     } else if (counter != 0){
-      emit(SwipeCardsLoading(names2));
+      emit(SwipeCardsLoading(freeUsers));
     } else {
       emit(SwipeCardsEnded());
     }
@@ -59,6 +65,6 @@ class SwipeCardsBloc extends Bloc<SwipeCardsEvent, SwipeCardsState> {
     await SwipingCardsRepo.fetchPresentPaymentSheet();
 
     // counter = 20;
-    emit(SwipeCardsLoading(names));
+    emit(SwipeCardsLoading(users));
   }
 }

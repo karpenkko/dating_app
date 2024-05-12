@@ -372,8 +372,9 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                                 selectedItem,
                               ),
                             );
+                            context.go('/swipe');
                           }
-                          context.go('/swipe');
+
                         },
                       ),
                     ],

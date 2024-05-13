@@ -41,7 +41,7 @@ class SwipingCardsRepo {
 
   Future<void> updateSubscription(int? id, String date) async {
     var dio = Dio();
-    Response response = await dio.post(
+    Response response = await dio.put(
       '$customLink/api/update_membership/$id',
       data: {
         "user_id": id,
@@ -59,9 +59,12 @@ class SwipingCardsRepo {
 
   Future<void> likeUser(int? userId, int? likeId) async {
     var dio = Dio();
-    Response response = await dio.post(
+    Response response = await dio.get(
       '$customLink/api/profiles/$userId/like',
-      data: {"user_liked_id": userId, "liked_user_id": likeId},
+      data: {
+        "user_liked_id": userId,
+        "liked_user_id": likeId,
+      },
     );
     if (response.statusCode == 200) {
       print(response.data);

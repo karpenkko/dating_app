@@ -5,20 +5,16 @@ sealed class AuthState {}
 
 final class AuthInitial extends AuthState {}
 
+class LoginLoadingState extends AuthState {}
 
-class LoginLoadingState extends AuthState {
-}
-
-class LoginLoadedState extends AuthState {
-}
+class LoginLoadedState extends AuthState {}
 
 class LoginErrorState extends AuthState {
   final String error;
   LoginErrorState(this.error);
 }
 
-class SignupLoadingState extends AuthState {
-}
+class SignupLoadingState extends AuthState {}
 
 class SignupLoadedState extends AuthState {
   SignupLoadedState();

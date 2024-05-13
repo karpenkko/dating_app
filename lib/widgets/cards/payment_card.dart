@@ -4,12 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../../features/switching_themes/utils/colors.dart';
 import '../../features/swipe_cards/bloc/swipe_cards_bloc.dart';
 
 class PaymentCard extends StatelessWidget {
-
   PaymentCard({
     super.key,
   });
@@ -24,8 +22,8 @@ class PaymentCard extends StatelessWidget {
             const RoundTitle(titleText: 'пошук піплов'),
             Flexible(
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                 child: DottedBorder(
                   color: AppColor.blackColor,
                   strokeCap: StrokeCap.round,
@@ -102,8 +100,7 @@ class PaymentCard extends StatelessWidget {
                                     horizontal: 20, vertical: 15),
                                 decoration: BoxDecoration(
                                   color: AppColor.pinkColor,
-                                  borderRadius:
-                                  BorderRadius.circular(40),
+                                  borderRadius: BorderRadius.circular(40),
                                 ),
                                 child: const Text(
                                   'Оформити',

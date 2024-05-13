@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+
 class AppColor {
   AppColor._();
   static const Color blackColor = Color(0xFF141416);

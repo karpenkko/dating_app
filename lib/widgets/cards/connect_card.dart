@@ -18,7 +18,6 @@ class ConnectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return DottedBorder(
       color: Theme.of(context).primaryColor,
       strokeCap: StrokeCap.round,
@@ -41,8 +40,8 @@ class ConnectCard extends StatelessWidget {
                   height: 120,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      'assets/woman.jpg',
+                    child: Image(
+                      image: MemoryImage(user.photo!),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -109,7 +108,7 @@ class ConnectCard extends StatelessWidget {
                   scheme: 'tel',
                   path: '${user.phone}',
                 );
-                if(await canLaunchUrl(url)) {
+                if (await canLaunchUrl(url)) {
                   await launchUrl(url);
                 } else {
                   print('cannot launch this url');

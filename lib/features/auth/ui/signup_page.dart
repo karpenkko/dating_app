@@ -129,21 +129,24 @@ class _SignupPageState extends State<SignupPage> {
                               if (passwordController.text ==
                                   checkPasswordController.text) {
                                 BlocProvider.of<AuthBloc>(context).add(
-                                  ProcessSignupEvent(emailController.text, passwordController.text),
+                                  ProcessSignupEvent(emailController.text,
+                                      passwordController.text),
                                 );
                               } else {
                                 final snackBar = CustomSnackBar(
                                   context: context,
                                   text: 'Паролі не співпадають',
                                 );
-                                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               }
                             } else {
                               final snackBar = CustomSnackBar(
                                 context: context,
                                 text: 'Заповніть всі поля',
                               );
-                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(snackBar);
                             }
                           }),
                     ],

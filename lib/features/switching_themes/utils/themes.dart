@@ -13,6 +13,7 @@ class AppThemes {
     )
   };
 }
+
 enum AppTheme {
   lightTheme,
   darkTheme,

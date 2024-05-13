@@ -23,17 +23,16 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const IntroPage(),
     ),
     GoRoute(
-      name: 'signup',
-      path: '/signup',
-      builder: (context, state) => const SignupPage(),
-      routes: [
-        GoRoute(
-          name: 'login',
-          path: 'login',
-          builder: (context, state) => const LoginPage(),
-        ),
-      ]
-    ),
+        name: 'signup',
+        path: '/signup',
+        builder: (context, state) => const SignupPage(),
+        routes: [
+          GoRoute(
+            name: 'login',
+            path: 'login',
+            builder: (context, state) => const LoginPage(),
+          ),
+        ]),
     GoRoute(
       name: 'create-profile',
       path: '/create-profile',

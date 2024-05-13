@@ -6,18 +6,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../user_profile/models/user_model.dart';
 import '../repos/user_connections_repo.dart';
-import 'package:dating_app/data.dart';
 
 part 'user_connections_event.dart';
 part 'user_connections_state.dart';
 
-class UserConnectionsBloc extends Bloc<UserConnectionsEvent, UserConnectionsState> {
+class UserConnectionsBloc
+    extends Bloc<UserConnectionsEvent, UserConnectionsState> {
   final UserConnectionsRepo _userConnectionsRepo;
-  UserConnectionsBloc(this._userConnectionsRepo) : super(UserConnectionsInitial()) {
+  UserConnectionsBloc(this._userConnectionsRepo)
+      : super(UserConnectionsInitial()) {
     on<UserConnectionsFetchEvent>(userConnectionsFetchEvent);
   }
 
-  FutureOr<void> userConnectionsFetchEvent(UserConnectionsFetchEvent event, Emitter<UserConnectionsState> emit) async{
+  FutureOr<void> userConnectionsFetchEvent(UserConnectionsFetchEvent event,
+      Emitter<UserConnectionsState> emit) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       int? id = prefs.getInt('id');
@@ -28,8 +30,6 @@ class UserConnectionsBloc extends Bloc<UserConnectionsEvent, UserConnectionsStat
       } else {
         emit(UserConnectionsErrorState('У вас ще немає взаємних вподобань'));
       }
-
-
     } catch (e) {
       emit(UserConnectionsErrorState(e.toString()));
     }

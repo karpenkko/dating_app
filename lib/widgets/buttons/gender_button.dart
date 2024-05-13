@@ -8,7 +8,6 @@ class GenderButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback onTap;
 
-
   const GenderButton({
     super.key,
     required this.selectedGender,
@@ -25,12 +24,9 @@ class GenderButton extends StatelessWidget {
         child: Container(
           width: double.infinity,
           // width: 320,
-          padding:
-          const EdgeInsets.only(top: 16, bottom: 16),
+          padding: const EdgeInsets.only(top: 16, bottom: 16),
           decoration: BoxDecoration(
-            color: selectedGender == gender
-                ? AppColor.pinkColor
-                : null,
+            color: selectedGender == gender ? AppColor.pinkColor : null,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: selectedGender == gender

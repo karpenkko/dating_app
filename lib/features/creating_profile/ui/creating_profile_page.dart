@@ -137,7 +137,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
           listener: (context, state) {
             if (state is CreatingProfileSuccess) {
               // context.go('/swipe');
-            } else if (state is CreatingProfileFailed){
+            } else if (state is CreatingProfileFailed) {
               print(state.error);
             }
           },
@@ -194,7 +194,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                           ),
                         ),
                         const SizedBox(height: 40),
-      
+
                         //NAME AND AGE
                         LoginField(
                           controller: nameController,
@@ -208,7 +208,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                           length: 16.0,
                         ),
                         const SizedBox(height: 20),
-      
+
                         //GENDER
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -240,7 +240,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                         PhoneField(onPhoneNumberChanged: handlePhoneNumber),
                         //PHONE NUMBER
                         const SizedBox(height: 20),
-      
+
                         //THE PURPOSE OF THE SEARCH
                         CustomDropdownMenu(
                           selectedItem: selectedItem,
@@ -252,7 +252,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                           },
                         ),
                         const SizedBox(height: 20),
-      
+
                         //SEARCH REGION
                         CustomDropdownSearch(
                           isEnable: true,
@@ -274,7 +274,8 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                           onChanged: (selectedValue) {
                             if (selectedValue != null) {
                               BlocProvider.of<CreatingProfileBloc>(context).add(
-                                CommunityDropdownValueChangedEvent(selectedValue),
+                                CommunityDropdownValueChangedEvent(
+                                    selectedValue),
                               );
                             }
                           },
@@ -292,7 +293,7 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                             }
                           },
                         ),
-      
+
                         //HOBBIES
                         const SizedBox(height: 60),
                         Text(
@@ -344,8 +345,8 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                                           alignment: WrapAlignment.center,
                                           spacing: 10.0,
                                           runSpacing: 10.0,
-                                          children:
-                                              state.selectedHobbies.map((hobby) {
+                                          children: state.selectedHobbies
+                                              .map((hobby) {
                                             return RoundHobbies(
                                               hobby: hobby,
                                               isSelected: true,
@@ -375,7 +376,6 @@ class _CreatingProfilePageState extends State<CreatingProfilePage> {
                               );
                               context.go('/swipe');
                             }
-      
                           },
                         ),
                       ],

@@ -12,7 +12,7 @@ class IntroPage extends StatelessWidget {
     Timer(const Duration(seconds: 3), () async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       var id = prefs.getInt("id");
-      if(id == null) {
+      if (id == null) {
         context.push('/signup');
       } else {
         context.push('/swipe');
@@ -45,7 +45,6 @@ class IntroPage extends StatelessWidget {
             ),
           ],
         ),
-
       ),
     );
   }

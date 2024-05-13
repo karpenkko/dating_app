@@ -7,7 +7,6 @@ import '../../switching_themes/bloc/theme_bloc.dart';
 import '../../switching_themes/utils/colors.dart';
 import '../../switching_themes/utils/themes.dart';
 import '../bloc/user_profile_bloc.dart';
-import '../models/user_model.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -29,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return BlocBuilder<UserProfileBloc, UserProfileState>(
       builder: (context, state) {
-        if (state is UserProfileInitial){
+        if (state is UserProfileInitial) {
           return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(),
@@ -73,10 +72,11 @@ class _ProfilePageState extends State<ProfilePage> {
                               Switch(
                                 activeTrackColor: AppColor.purpleColor,
                                 inactiveTrackColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                                inactiveThumbColor: Theme.of(context).primaryColor,
+                                    Theme.of(context).scaffoldBackgroundColor,
+                                inactiveThumbColor:
+                                    Theme.of(context).primaryColor,
                                 trackOutlineColor:
-                                MaterialStateColor.resolveWith((states) {
+                                    MaterialStateColor.resolveWith((states) {
                                   if (states.contains(MaterialState.disabled)) {
                                     return Theme.of(context)
                                         .scaffoldBackgroundColor;
@@ -84,7 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   return Theme.of(context).primaryColor;
                                 }),
                                 trackOutlineWidth:
-                                MaterialStateProperty.resolveWith((states) {
+                                    MaterialStateProperty.resolveWith((states) {
                                   if (states.contains(MaterialState.disabled)) {
                                     return 1;
                                   }
@@ -107,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
           );
-        } else{
+        } else {
           return const Scaffold(
             body: Center(
               child: Text('Сталася помилка під час завантаження профілю.'),

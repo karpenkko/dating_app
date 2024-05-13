@@ -1,8 +1,6 @@
 import 'package:dating_app/widgets/round_copmonents/round_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../switching_themes/utils/colors.dart';
 import '../../../widgets/cards/connect_card.dart';
 import '../bloc/user_connections_bloc.dart';
 
@@ -40,18 +38,20 @@ class _ConnectPageState extends State<ConnectPage> {
                 physics: const BouncingScrollPhysics(),
                 child: Center(
                   child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+                    padding: const EdgeInsets.only(
+                        top: 10, bottom: 10, left: 20, right: 20),
                     child: Column(
                       children: [
                         const RoundTitle(titleText: 'ваші конекти'),
                         const SizedBox(height: 60),
-                        ...state.users.map((user) => Column(
-                          children: [
-                            ConnectCard(user: user),
-                            const SizedBox(height: 30),
-                          ],
-                        )),
+                        ...state.users.map(
+                          (user) => Column(
+                            children: [
+                              ConnectCard(user: user),
+                              const SizedBox(height: 30),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),

@@ -27,7 +27,6 @@ class ScaffoldWithNavbar extends StatelessWidget {
   }
 }
 
-
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onTap;
@@ -58,16 +57,22 @@ class CustomBottomNavigationBar extends StatelessWidget {
           items: [
             BottomNavigationBarItem(
               icon: Container(
-                margin:  const EdgeInsets.only(left: 20, top: 2),
+                margin: const EdgeInsets.only(left: 20, top: 2),
                 padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: currentIndex == 0 ? AppColor.whiteColor : Colors.transparent,
+                  color: currentIndex == 0
+                      ? AppColor.whiteColor
+                      : Colors.transparent,
                 ),
                 child: SvgPicture.asset(
                   'assets/icons/nav_home.svg',
                   height: 22,
-                  colorFilter: currentIndex == 0 ? const ColorFilter.mode(AppColor.purpleColor, BlendMode.srcIn) : const ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+                  colorFilter: currentIndex == 0
+                      ? const ColorFilter.mode(
+                          AppColor.purpleColor, BlendMode.srcIn)
+                      : const ColorFilter.mode(
+                          AppColor.whiteColor, BlendMode.srcIn),
                 ),
               ),
               label: '',
@@ -78,28 +83,40 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: currentIndex == 1 ? AppColor.whiteColor : Colors.transparent,
+                  color: currentIndex == 1
+                      ? AppColor.whiteColor
+                      : Colors.transparent,
                 ),
                 child: SvgPicture.asset(
                   'assets/icons/nav_message.svg',
                   height: 18,
-                  colorFilter: currentIndex == 1 ? const ColorFilter.mode(AppColor.purpleColor, BlendMode.srcIn) : const ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+                  colorFilter: currentIndex == 1
+                      ? const ColorFilter.mode(
+                          AppColor.purpleColor, BlendMode.srcIn)
+                      : const ColorFilter.mode(
+                          AppColor.whiteColor, BlendMode.srcIn),
                 ),
               ),
               label: '',
             ),
             BottomNavigationBarItem(
               icon: Container(
-                margin:  const EdgeInsets.only(right: 20, top: 3),
+                margin: const EdgeInsets.only(right: 20, top: 3),
                 padding: const EdgeInsets.all(13),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: currentIndex == 2 ? AppColor.whiteColor : Colors.transparent,
+                  color: currentIndex == 2
+                      ? AppColor.whiteColor
+                      : Colors.transparent,
                 ),
                 child: SvgPicture.asset(
                   'assets/icons/nav_profile.svg',
                   height: 22,
-                  colorFilter: currentIndex == 2 ? const ColorFilter.mode(AppColor.purpleColor, BlendMode.srcIn) : const ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+                  colorFilter: currentIndex == 2
+                      ? const ColorFilter.mode(
+                          AppColor.purpleColor, BlendMode.srcIn)
+                      : const ColorFilter.mode(
+                          AppColor.whiteColor, BlendMode.srcIn),
                 ),
               ),
               label: '',

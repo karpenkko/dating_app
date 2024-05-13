@@ -23,7 +23,8 @@ class RoundIconButton extends StatelessWidget {
       ),
       child: SvgPicture.asset(
         path,
-        colorFilter: const ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+        colorFilter:
+            const ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
         height: 14,
       ),
     );

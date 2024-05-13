@@ -6,7 +6,6 @@ class CustomDropdownMenu extends StatelessWidget {
   final List<String> options;
   final Function(String?)? onChanged;
 
-
   const CustomDropdownMenu({
     super.key,
     required this.selectedItem,
@@ -57,8 +56,7 @@ class CustomDropdownMenu extends StatelessWidget {
       ),
       value: selectedItem,
       onChanged: onChanged,
-      items: options
-          .map<DropdownMenuItem<String>>((String value) {
+      items: options.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Row(

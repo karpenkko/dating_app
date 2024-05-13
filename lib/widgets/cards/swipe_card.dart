@@ -2,8 +2,6 @@ import 'package:dating_app/widgets/round_copmonents/round_categories.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../features/switching_themes/utils/colors.dart';
 import '../../features/user_profile/models/user_model.dart';
 
 class SwipeCard extends StatelessWidget {
@@ -18,9 +16,10 @@ class SwipeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return DottedBorder(
-      color: showDottedBorder? Theme.of(context).primaryColor : Colors.transparent,
+      color: showDottedBorder
+          ? Theme.of(context).primaryColor
+          : Colors.transparent,
       strokeCap: StrokeCap.round,
       borderType: BorderType.RRect,
       dashPattern: const [8, 8],
@@ -36,9 +35,8 @@ class SwipeCard extends StatelessWidget {
             Expanded(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  // '${user.photo}',
-                  'assets/woman.jpg',
+                child: Image(
+                  image: MemoryImage(user.photo!),
                   fit: BoxFit.cover,
                 ),
               ),

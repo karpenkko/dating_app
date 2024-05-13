@@ -40,10 +40,10 @@ class CreatingProfileValidateEvent extends CreatingProfileEvent {
 
   CreatingProfileValidateEvent(
     this.photo,
-      this.name,
-      this.age,
-      this.gender,
-      this.phone,
-      this.searchPurpose,
+    this.name,
+    this.age,
+    this.gender,
+    this.phone,
+    this.searchPurpose,
   );
 }

@@ -6,13 +6,13 @@ sealed class SwipeCardsEvent {}
 final class SwipeCardsFetchEvent extends SwipeCardsEvent {}
 
 final class SwipeCardsRightEvent extends SwipeCardsEvent {
-  final int swipedCard;
-  SwipeCardsRightEvent(this.swipedCard);
+  final UserModel user;
+  SwipeCardsRightEvent(this.user);
 }
 
 final class SwipeCardsLeftEvent extends SwipeCardsEvent {
-  final int swipedCard;
-  SwipeCardsLeftEvent(this.swipedCard);
+  final UserModel user;
+  SwipeCardsLeftEvent(this.user);
 }
 
 final class SwipeCardsPaymentEvent extends SwipeCardsEvent {

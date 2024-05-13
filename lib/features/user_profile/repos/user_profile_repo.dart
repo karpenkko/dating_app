@@ -1,4 +1,3 @@
-
 import 'package:dating_app/features/user_profile/models/user_model.dart';
 import 'package:dio/dio.dart';
 

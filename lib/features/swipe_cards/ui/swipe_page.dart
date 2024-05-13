@@ -6,8 +6,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import '../../../widgets/cards/payment_card.dart';
+import '../../user_profile/models/user_model.dart';
 import '../bloc/swipe_cards_bloc.dart';
-
 
 class SwipePage extends StatefulWidget {
   const SwipePage({super.key});
@@ -37,22 +37,16 @@ class _SwipePageState extends State<SwipePage> {
     int previousIndex,
     int? currentIndex,
     CardSwiperDirection direction,
+    UserModel user,
   ) {
     if (direction.name == 'right') {
-      BlocProvider.of<SwipeCardsBloc>(context)
-          .add(SwipeCardsRightEvent(previousIndex));
+      BlocProvider.of<SwipeCardsBloc>(context).add(SwipeCardsRightEvent(user));
       print('$previousIndex');
     } else {
-      BlocProvider.of<SwipeCardsBloc>(context)
-          .add(SwipeCardsLeftEvent(previousIndex));
+      BlocProvider.of<SwipeCardsBloc>(context).add(SwipeCardsLeftEvent(user));
     }
-    // print(
-    //   'The card $previousIndex was swiped to the ${direction.name}. Now the card $currentIndex is on top',
-    // );
     return true;
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +83,13 @@ class _SwipePageState extends State<SwipePage> {
                             vertical: false,
                           ),
                           controller: controller,
-                          onSwipe: _onSwipe,
+                          onSwipe: (previousIndex, currentIndex, direction) =>
+                              _onSwipe(
+                            previousIndex,
+                            currentIndex,
+                            direction,
+                            state.users[previousIndex],
+                          ),
                           cardsCount: state.users.length,
                           numberOfCardsDisplayed: 2,
                           backCardOffset: const Offset(0, 0),

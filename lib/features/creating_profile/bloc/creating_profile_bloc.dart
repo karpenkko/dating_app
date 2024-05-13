@@ -4,8 +4,6 @@ import 'dart:typed_data';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
-
 import '../../user_profile/models/user_model.dart';
 import '../repos/creating_profile_repo.dart';
 
@@ -16,7 +14,8 @@ class CreatingProfileBloc
     extends Bloc<CreatingProfileEvent, CreatingProfileState> {
   final CreatingProfileRepo _creatingProfileRepo;
 
-  CreatingProfileBloc(this._creatingProfileRepo) : super(CreatingProfileInitial()) {
+  CreatingProfileBloc(this._creatingProfileRepo)
+      : super(CreatingProfileInitial()) {
     on<CreatingProfileFetchEvent>(creatingProfileFetchEvent);
     on<RegionDropdownValueChangedEvent>(regionDropdownValueChangedEvent);
     on<CommunityDropdownValueChangedEvent>(communityDropdownValueChangedEvent);
@@ -180,8 +179,7 @@ class CreatingProfileBloc
 
   FutureOr<void> creatingProfileValidateEvent(
       CreatingProfileValidateEvent event,
-      Emitter<CreatingProfileState> emit)  async{
-
+      Emitter<CreatingProfileState> emit) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int? id = prefs.getInt('id');
 
@@ -203,7 +201,6 @@ class CreatingProfileBloc
     } catch (e) {
       emit(CreatingProfileFailed(e.toString()));
     }
-
 
     // List<int> photoCode= event.photo!.toList();
     // String photo = base64Encode(photoCode);

@@ -5,7 +5,6 @@ import '../../../link.dart';
 
 class UserConnectionsRepo {
   Future<List<int>> getConnectionsId(int? id) async {
-
     var dio = Dio();
     Response response = await dio.get(
       '$customLink/api/profiles/1/user_id_likes',
@@ -13,7 +12,8 @@ class UserConnectionsRepo {
 
     print(response.statusCode);
     if (response.statusCode == 200) {
-      List<int> userIds = response.data.map<int>((item) => item['user_id'] as int).toList();
+      List<int> userIds =
+          response.data.map<int>((item) => item['user_id'] as int).toList();
       Set<int> uniqueUserIds = userIds.toSet();
       List<int> uniqueUserIdsList = uniqueUserIds.toList();
       return uniqueUserIdsList;
@@ -24,7 +24,6 @@ class UserConnectionsRepo {
   }
 
   Future<List<UserModel>> getConnectionsInfo(List<int> usersId) async {
-
     List<UserModel> users = [];
 
     for (int userId in usersId) {

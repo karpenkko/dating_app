@@ -13,8 +13,7 @@ class RoundCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(
-          left: 14, right: 14, top: 8, bottom: 8),
+      padding: const EdgeInsets.only(left: 14, right: 14, top: 8, bottom: 8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(

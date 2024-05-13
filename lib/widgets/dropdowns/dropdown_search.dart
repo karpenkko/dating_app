@@ -26,7 +26,7 @@ class CustomDropdownSearch extends StatelessWidget {
         icon: SvgPicture.asset(
           'assets/icons/dropdown.svg',
           colorFilter:
-               ColorFilter.mode(Theme.of(context).primaryColor, BlendMode.srcIn),
+              ColorFilter.mode(Theme.of(context).primaryColor, BlendMode.srcIn),
           height: 8,
         ),
       ),

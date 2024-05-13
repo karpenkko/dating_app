@@ -16,7 +16,8 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
     on<UserProfileFetchEvent>(userProfileFetchEvent);
   }
 
-  FutureOr<void> userProfileFetchEvent(UserProfileFetchEvent event, Emitter<UserProfileState> emit) async{
+  FutureOr<void> userProfileFetchEvent(
+      UserProfileFetchEvent event, Emitter<UserProfileState> emit) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       int? id = prefs.getInt('id');

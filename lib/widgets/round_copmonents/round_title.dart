@@ -13,8 +13,7 @@ class RoundTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(
-          left: 40, right: 40, top: 10, bottom: 10),
+      padding: const EdgeInsets.only(left: 40, right: 40, top: 10, bottom: 10),
       decoration: BoxDecoration(
         color: AppColor.greenColor,
         borderRadius: BorderRadius.circular(20),

@@ -3,7 +3,6 @@ part of 'auth_bloc.dart';
 @immutable
 sealed class AuthEvent {}
 
-
 class ProcessLoginEvent extends AuthEvent {
   final String email;
   final String password;

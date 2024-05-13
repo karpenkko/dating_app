@@ -70,6 +70,7 @@ class CreatingProfileRepo {
       return true;
     } else {
       throw Exception(response.statusMessage);
-    };
+    }
+    ;
   }
 }

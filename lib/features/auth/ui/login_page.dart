@@ -117,14 +117,16 @@ class _LoginPageState extends State<LoginPage> {
                           if (emailController.text.isNotEmpty &&
                               passwordController.text.isNotEmpty) {
                             BlocProvider.of<AuthBloc>(context).add(
-                              ProcessLoginEvent(emailController.text, passwordController.text),
+                              ProcessLoginEvent(emailController.text,
+                                  passwordController.text),
                             );
                           } else {
                             final snackBar = CustomSnackBar(
                               context: context,
                               text: 'Заповніть всі поля',
                             );
-                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
                           }
                         },
                       ),

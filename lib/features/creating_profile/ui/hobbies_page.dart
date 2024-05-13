@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../widgets/custom_snackbar.dart';
-import '../../switching_themes/utils/colors.dart';
 import '../../../widgets/buttons/big_button.dart';
 import '../../../widgets/round_copmonents/round_hobbies.dart';
 import '../bloc/creating_profile_bloc.dart';
@@ -22,9 +21,9 @@ class _HobbiesPageState extends State<HobbiesPage> {
     return SingleChildScrollView(
       child: BlocConsumer<CreatingProfileBloc, CreatingProfileState>(
         listenWhen: (previous, current) =>
-        current is CreatingProfileActionState,
+            current is CreatingProfileActionState,
         buildWhen: (previous, current) =>
-        current is! CreatingProfileActionState,
+            current is! CreatingProfileActionState,
         listener: (context, state) {},
         builder: (context, state) {
           if (state is CreatingProfileLoading) {
@@ -76,14 +75,13 @@ class _HobbiesPageState extends State<HobbiesPage> {
                   BigButton(
                     buttonText: 'Готово',
                     onTap: () {
-                      if(state.selectedHobbies.length < 3){
+                      if (state.selectedHobbies.length < 3) {
                         final snackBar = CustomSnackBar(
                           context: context,
                           text: 'Оберіть від 3 до 5 пунктів',
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      }
-                      else {
+                      } else {
                         Navigator.pop(context);
                       }
                     },

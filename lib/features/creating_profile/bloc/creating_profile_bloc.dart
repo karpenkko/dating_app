@@ -3,8 +3,10 @@ import 'dart:typed_data';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
+import '../../user_profile/models/user_model.dart';
 import '../repos/creating_profile_repo.dart';
 
 part 'creating_profile_event.dart';
@@ -178,36 +180,32 @@ class CreatingProfileBloc
 
   FutureOr<void> creatingProfileValidateEvent(
       CreatingProfileValidateEvent event,
-      Emitter<CreatingProfileState> emit) {
-    print(event.searchPurpose);
-    print(event.phone);
-    print(event.name);
-    print(event.age);
-    print(event.gender);
+      Emitter<CreatingProfileState> emit)  async{
 
-    emit(CreatingProfileSuccess());
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? id = prefs.getInt('id');
+
+    UserModel user = UserModel(
+      id: id,
+      name: event.name,
+      age: event.age,
+      photo: event.photo,
+      gender: event.gender,
+      phone: event.phone,
+      searchPurpose: event.searchPurpose,
+      city: city,
+      hobbies: hobbies,
+    );
+
+    try {
+      await _creatingProfileRepo.createProfile(id, user);
+      emit(CreatingProfileSuccess());
+    } catch (e) {
+      emit(CreatingProfileFailed(e.toString()));
+    }
 
 
     // List<int> photoCode= event.photo!.toList();
     // String photo = base64Encode(photoCode);
-
-
-
-    // try {
-    //   final result = await _creatingProfileRepo.createProfile(
-    //     photo,
-    //     event.name,
-    //     event.age,
-    //     event.gender,
-    //     event.phone,
-    //     event.searchPurpose,
-    //     city,
-    //     hobbies,
-    //   );
-    //   emit(CreatingProfileSuccess());
-    //   print('реєстрація');
-    // } catch (e) {
-    //   emit(CreatingProfileFailed(e.toString()));
-    // }
   }
 }

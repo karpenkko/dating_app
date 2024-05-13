@@ -9,3 +9,8 @@ final class UserConnectionsFetch extends UserConnectionsState {
   final List<UserModel> users;
   UserConnectionsFetch(this.users);
 }
+
+class UserConnectionsErrorState extends UserConnectionsState {
+  final String error;
+  UserConnectionsErrorState(this.error);
+}

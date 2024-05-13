@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
 import 'package:dating_app/data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../user_profile/models/user_model.dart';
 
@@ -35,7 +36,25 @@ class SwipeCardsBloc extends Bloc<SwipeCardsEvent, SwipeCardsState> {
   //   {'id': 7, 'name': 'Аід5',},];
   int counter = 20;
 
-  FutureOr<void> swipeCardsFetchEvent(SwipeCardsFetchEvent event, Emitter<SwipeCardsState> emit) {
+  FutureOr<void> swipeCardsFetchEvent(SwipeCardsFetchEvent event, Emitter<SwipeCardsState> emit) async{
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int? id = prefs.getInt('id');
+    String? subscriptionType = prefs.getString('subscription');
+
+    DateTime currentDate = DateTime.now();
+    String formattedDate = "${currentDate.year}-${currentDate.month}-${currentDate.day}";
+
+    DateTime date = DateTime.now();
+
+    if (subscriptionType == null) {
+      try {
+        final result = await _swipingCardsRepo.createSubscription(id, formattedDate);
+      } catch (e) {
+        emit(SwipeCardsErrorState(e.toString()));
+      }
+    }
+
     counter = counter - 10;
     if (counter == 20) {
       emit(SwipeCardsLoading(users));

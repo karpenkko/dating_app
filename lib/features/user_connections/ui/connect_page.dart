@@ -33,25 +33,27 @@ class _ConnectPageState extends State<ConnectPage> {
             ),
           );
         } else if (state is UserConnectionsFetch) {
-          return Scaffold(
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            body: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Center(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(top: 40, bottom: 10, left: 20, right: 20),
-                  child: Column(
-                    children: [
-                      const RoundTitle(titleText: 'ваші конекти'),
-                      const SizedBox(height: 60),
-                      ...state.users.map((user) => Column(
-                        children: [
-                          ConnectCard(user: user),
-                          const SizedBox(height: 30),
-                        ],
-                      )),
-                    ],
+          return SafeArea(
+            child: Scaffold(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              body: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Center(
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+                    child: Column(
+                      children: [
+                        const RoundTitle(titleText: 'ваші конекти'),
+                        const SizedBox(height: 60),
+                        ...state.users.map((user) => Column(
+                          children: [
+                            ConnectCard(user: user),
+                            const SizedBox(height: 30),
+                          ],
+                        )),
+                      ],
+                    ),
                   ),
                 ),
               ),

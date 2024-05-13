@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../user_profile/models/user_model.dart';
 import '../repos/user_connections_repo.dart';
@@ -17,6 +18,20 @@ class UserConnectionsBloc extends Bloc<UserConnectionsEvent, UserConnectionsStat
   }
 
   FutureOr<void> userConnectionsFetchEvent(UserConnectionsFetchEvent event, Emitter<UserConnectionsState> emit) async{
-    emit(UserConnectionsFetch(freeUsers));
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      int? id = prefs.getInt('id');
+      final resultId = await _userConnectionsRepo.getConnectionsId(id);
+      if (resultId.isNotEmpty) {
+        final result = await _userConnectionsRepo.getConnectionsInfo(resultId);
+        emit(UserConnectionsFetch(result));
+      } else {
+        emit(UserConnectionsErrorState('У вас ще немає взаємних вподобань'));
+      }
+
+
+    } catch (e) {
+      emit(UserConnectionsErrorState(e.toString()));
+    }
   }
 }

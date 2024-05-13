@@ -18,13 +18,6 @@ class SwipeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> hobbies = [
-      'фотографія',
-      'кулінарія',
-      'книги',
-      'психологія',
-      'спорт'
-    ];
 
     return DottedBorder(
       color: showDottedBorder? Theme.of(context).primaryColor : Colors.transparent,
@@ -44,7 +37,8 @@ class SwipeCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
-                  '${user.photo}',
+                  // '${user.photo}',
+                  'assets/woman.jpg',
                   fit: BoxFit.cover,
                 ),
               ),
@@ -76,7 +70,7 @@ class SwipeCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  'Київ',
+                  '${user.city}',
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontFamily: 'Raleway',
@@ -89,7 +83,7 @@ class SwipeCard extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              'шукає: друзів',
+              'шукає: ${user.searchPurpose}',
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
                 fontFamily: 'Raleway',

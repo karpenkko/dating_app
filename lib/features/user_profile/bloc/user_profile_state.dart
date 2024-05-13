@@ -11,3 +11,8 @@ final class UserProfileFetch extends UserProfileState {
   final UserModel user;
   UserProfileFetch(this.user);
 }
+
+class UserProfileErrorState extends UserProfileState {
+  final String error;
+  UserProfileErrorState(this.error);
+}

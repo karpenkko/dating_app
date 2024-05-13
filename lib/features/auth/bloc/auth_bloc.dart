@@ -18,10 +18,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> processLoginEvent(ProcessLoginEvent event, Emitter<AuthState> emit) async {
     emit(LoginLoadingState());
+    print(event.email);
+    print(event.password);
+
     try {
       final result = await _authRepository.requestLogin(event.email, event.password);
       emit(LoginLoadedState());
-      print('вхід');
     } catch (e) {
       emit(LoginErrorState(e.toString()));
     }
@@ -32,7 +34,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       final result = await _authRepository.requestSignup(event.email, event.password);
       emit(SignupLoadedState());
-      print('реєстрація');
     } catch (e) {
       emit(SignupErrorState(e.toString()));
     }

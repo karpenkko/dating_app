@@ -1,7 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../link.dart';
+import '../../user_profile/models/user_model.dart';
 
 class CreatingProfileRepo {
   Future<List<dynamic>> fetchRegions() async {
@@ -53,17 +57,19 @@ class CreatingProfileRepo {
     }
   }
 
-  Future<void> createProfile(
-    String photo,
-    String name,
-    int age,
-    String? gender,
-    String? phone,
-    String? searchPurpose,
-    String? city,
-    List<String> hobbies,
-  ) {
+  Future<bool> createProfile(int? id, UserModel user) async {
+    Map<String, dynamic> json = user.toJson();
 
-    return Future.value();
+    var dio = Dio();
+    Response response = await dio.get(
+      '$customLink/api/create_profile/$id',
+      data: json,
+    );
+
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw Exception(response.statusMessage);
+    };
   }
 }

@@ -1,8 +1,11 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 class UserModel {
   int? id;
   String? name;
   int? age;
-  String? photo;
+  Uint8List? photo;
   String? gender;
   String? phone;
   String? searchPurpose;
@@ -25,25 +28,26 @@ class UserModel {
     id = json['id'];
     name = json['name'];
     age = json['age'];
-    photo = json['photo'];
+    photo = base64Decode(json['photo']);
     gender = json['gender'];
     phone = json['phone'];
-    searchPurpose = json['searchPurpose'];
+    searchPurpose = json['search_purpose'];
     city = json['city'];
-    hobbies = json['hobbies'];
+    String test = json['hobbies'];
+    hobbies = test.split(', ');
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['image'] = base64Encode(this.photo!);
+    data['user_id'] = this.id;
     data['name'] = this.name;
     data['age'] = this.age;
-    data['photo'] = this.photo;
     data['gender'] = this.gender;
     data['phone'] = this.phone;
-    data['searchPurpose'] = this.searchPurpose;
+    data['search_purpose'] = this.searchPurpose;
     data['city'] = this.city;
-    data['hobbies'] = this.hobbies;
+    data['hobbies'] = this.hobbies!.join(', ');
     return data;
   }
 }

@@ -18,13 +18,6 @@ class ConnectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final List<String> hobbies = [
-    //   'фотографія',
-    //   'кулінарія',
-    //   'книги',
-    //   'психологія',
-    //   'спорт'
-    // ];
 
     return DottedBorder(
       color: Theme.of(context).primaryColor,
@@ -49,7 +42,7 @@ class ConnectCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.asset(
-                      '${user.photo}',
+                      'assets/woman.jpg',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -69,7 +62,7 @@ class ConnectCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${user.age}, Київ',
+                      '${user.age}, ${user.city}',
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         fontFamily: 'Raleway',
@@ -82,7 +75,7 @@ class ConnectCard extends StatelessWidget {
                     SizedBox(
                       width: 140,
                       child: Text(
-                        'шукає: друзів',
+                        'шукає: ${user.searchPurpose}',
                         style: TextStyle(
                           color: Theme.of(context).primaryColor,
                           fontFamily: 'Raleway',
@@ -114,7 +107,7 @@ class ConnectCard extends StatelessWidget {
               onTap: () async {
                 final Uri url = Uri(
                   scheme: 'tel',
-                  path: '+380996494208',
+                  path: '${user.phone}',
                 );
                 if(await canLaunchUrl(url)) {
                   await launchUrl(url);

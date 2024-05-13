@@ -36,71 +36,73 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           );
         } else if (state is UserProfileFetch) {
-          return Scaffold(
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            body: Center(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    top: 40, bottom: 10, left: 20, right: 20),
-                child: Column(
-                  children: [
-                    const RoundTitle(titleText: 'ваш профіль'),
-                    const SizedBox(height: 20),
-                    Flexible(
-                      child: SwipeCard(
-                        user: state.user,
-                        showDottedBorder: false,
+          return SafeArea(
+            child: Scaffold(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              body: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      top: 10, bottom: 10, left: 20, right: 20),
+                  child: Column(
+                    children: [
+                      const RoundTitle(titleText: 'ваш профіль'),
+                      const SizedBox(height: 20),
+                      Flexible(
+                        child: SwipeCard(
+                          user: state.user,
+                          showDottedBorder: false,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    BlocBuilder<ThemeBloc, ThemeData>(
-                      builder: (context, state) {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'тема',
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                                fontFamily: 'Raleway',
-                                fontWeight: FontWeight.w500,
-                                fontSize: 20,
-                                height: 1.2,
+                      const SizedBox(height: 10),
+                      BlocBuilder<ThemeBloc, ThemeData>(
+                        builder: (context, state) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'тема',
+                                style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 20,
+                                  height: 1.2,
+                                ),
                               ),
-                            ),
-                            const SizedBox(width: 10),
-                            Switch(
-                              activeTrackColor: AppColor.purpleColor,
-                              inactiveTrackColor:
-                              Theme.of(context).scaffoldBackgroundColor,
-                              inactiveThumbColor: Theme.of(context).primaryColor,
-                              trackOutlineColor:
-                              MaterialStateColor.resolveWith((states) {
-                                if (states.contains(MaterialState.disabled)) {
-                                  return Theme.of(context)
-                                      .scaffoldBackgroundColor;
-                                }
-                                return Theme.of(context).primaryColor;
-                              }),
-                              trackOutlineWidth:
-                              MaterialStateProperty.resolveWith((states) {
-                                if (states.contains(MaterialState.disabled)) {
+                              const SizedBox(width: 10),
+                              Switch(
+                                activeTrackColor: AppColor.purpleColor,
+                                inactiveTrackColor:
+                                Theme.of(context).scaffoldBackgroundColor,
+                                inactiveThumbColor: Theme.of(context).primaryColor,
+                                trackOutlineColor:
+                                MaterialStateColor.resolveWith((states) {
+                                  if (states.contains(MaterialState.disabled)) {
+                                    return Theme.of(context)
+                                        .scaffoldBackgroundColor;
+                                  }
+                                  return Theme.of(context).primaryColor;
+                                }),
+                                trackOutlineWidth:
+                                MaterialStateProperty.resolveWith((states) {
+                                  if (states.contains(MaterialState.disabled)) {
+                                    return 1;
+                                  }
                                   return 1;
-                                }
-                                return 1;
-                              }),
-                              value: state ==
-                                  AppThemes.appThemeData[AppTheme.darkTheme],
-                              onChanged: (bool val) {
-                                BlocProvider.of<ThemeBloc>(context)
-                                    .add(ThemeSwitchEvent());
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  ],
+                                }),
+                                value: state ==
+                                    AppThemes.appThemeData[AppTheme.darkTheme],
+                                onChanged: (bool val) {
+                                  BlocProvider.of<ThemeBloc>(context)
+                                      .add(ThemeSwitchEvent());
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
